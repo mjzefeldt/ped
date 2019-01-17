@@ -54,7 +54,7 @@ const createApp = () => {
   // session middleware with passport
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || 'my best friend is Cody',
+      secret: process.env.SESSION_SECRET || 'my best friend is Cody', // QUESTION: should I delete 'my best friend is Cody for deployment? I think yes...
       store: sessionStore,
       resave: false,
       saveUninitialized: false
