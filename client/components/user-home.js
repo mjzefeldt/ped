@@ -1,22 +1,34 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 // import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {fetchProfile} from '../store'
+// import {fetchProfile} from '../store'
 
 /**
  * COMPONENT
  */
 export class UserHome extends Component {
   // const {email} = props
-  componentDidMount() {
-    this.props.fetchProfile()
+  // componentDidMount() {
+  //   this.props.fetchProfile(url)
+  // }
+  constructor() {
+    super()
+    // this.handleClick = this.handleClick.bind(this)
   }
+  // handleClick() {
+  //   const url = window.location.href
+  //   console.log(url,'<<<URL')
+  //   this.props.fetchProfile(url)
+  // }
   render() {
     // this.props.fetchProfile()
     return (
-      <div>
-        <h3>Welcome! Fitbit OAuth worked!</h3>
-      </div>
+      <Fragment>
+        <div>
+          <h3>Welcome! Fitbit OAuth worked!</h3>
+        </div>
+        {/* <button onClick={this.handleClick}>Press</button> */}
+      </Fragment>
     )
   }
 }
@@ -30,11 +42,11 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => ({
-  fetchProfile: () => dispatch(fetchProfile())
-})
+// const mapDispatch = dispatch => ({
+//   fetchProfile: (url) => dispatch(fetchProfile(url))
+// })
 
-export default connect(mapState, mapDispatch)(UserHome)
+export default connect(mapState)(UserHome)
 
 /**
  * PROP TYPES
