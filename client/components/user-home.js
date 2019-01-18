@@ -1,18 +1,24 @@
-import React from 'react'
+import React, {Component} from 'react'
 // import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {fetchProfile} from '../store'
 
 /**
  * COMPONENT
  */
-export const UserHome = props => {
+export class UserHome extends Component {
   // const {email} = props
-
-  return (
-    <div>
-      <h3>Welcome! Fitbit OAuth worked!</h3>
-    </div>
-  )
+  componentDidMount() {
+    this.props.fetchProfile()
+  }
+  render() {
+    // this.props.fetchProfile()
+    return (
+      <div>
+        <h3>Welcome! Fitbit OAuth worked!</h3>
+      </div>
+    )
+  }
 }
 
 /**
@@ -24,7 +30,11 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
+const mapDispatch = dispatch => ({
+  fetchProfile: () => dispatch(fetchProfile())
+})
+
+export default connect(mapState, mapDispatch)(UserHome)
 
 /**
  * PROP TYPES
