@@ -1,56 +1,50 @@
 import React, {Component, Fragment} from 'react'
-// import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-// import {fetchProfile} from '../store'
+import {fetchFitInfo} from '../store'
+import ActivityContainer from './activity-container'
 
-/**
- * COMPONENT
- */
 export class UserHome extends Component {
-  // const {email} = props
-  // componentDidMount() {
-  //   this.props.fetchProfile(url)
+  // constructor() {
+  //   super()
   // }
-  constructor() {
-    super()
-    // this.handleClick = this.handleClick.bind(this)
+  componentDidMount() {
+    const url = window.location.href
+    const user = url
+      .split('#')[1]
+      .split('=')[2]
+      .split('&')[0]
+    const token = url
+      .split('#')[1]
+      .split('=')[1]
+      .split('&')[0]
+    const fitInfo = {user, token}
+    this.props.fetchFitInfo(fitInfo)
   }
-  // handleClick() {
-  //   const url = window.location.href
-  //   console.log(url,'<<<URL')
-  //   this.props.fetchProfile(url)
-  // }
+
   render() {
-    // this.props.fetchProfile()
+    console.log(this.props.user, this.props.token, '<<< home props')
+    const userInfo = this.props.userInfo
     return (
       <Fragment>
         <div>
           <h3>Welcome! Fitbit OAuth worked!</h3>
         </div>
-        {/* <button onClick={this.handleClick}>Press</button> */}
+        <ActivityContainer userInfo={userInfo} />
       </Fragment>
     )
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
-    email: state.user.email
+    user: state.fitbit.fitInfo.user,
+    token: state.fitbit.fitInfo.token,
+    userInfo: state.fitbit.fitInfo
   }
 }
 
-// const mapDispatch = dispatch => ({
-//   fetchProfile: (url) => dispatch(fetchProfile(url))
-// })
+const mapDispatch = dispatch => ({
+  fetchFitInfo: fitInfo => dispatch(fetchFitInfo(fitInfo))
+})
 
-export default connect(mapState)(UserHome)
-
-/**
- * PROP TYPES
- */
-// UserHome.propTypes = {
-//   email: PropTypes.string
-// }
+export default connect(mapState, mapDispatch)(UserHome)
