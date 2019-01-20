@@ -25,13 +25,15 @@ class Routes extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
-    // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.fitbit.fitInfo.user
-  }
-}
+{/* temporary disable while work on svg and front end components */}
+// const mapState = state => {
+//   return {
+//     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
+//     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
+    
+//     isLoggedIn: !!state.fitbit.fitInfo.user
+//   }
+// }
 
 // const mapDispatch = dispatch => {
 //   return {
@@ -43,13 +45,7 @@ const mapState = state => {
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default withRouter(connect(mapState)(Routes))
-// export default withRouter(Routes)
 
-/**
- * PROP TYPES
- */
-// Routes.propTypes = {
-//   loadInitialData: PropTypes.func.isRequired,
-//   isLoggedIn: PropTypes.bool.isRequired
-// }
+{/* temporary disable while work on svg and front end components */}
+// export default withRouter(connect(mapState)(Routes))
+export default withRouter(Routes)
