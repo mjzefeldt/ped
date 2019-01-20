@@ -12,37 +12,15 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx']
-    // alias: {
-    //   snapsvg: 'snapsvg/dist/snap.svg.js',
-    // }
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
-        test: /\.(jsx?|svg)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       }
-      // {
-      // test: require.resolve('snapsvg'),
-      //   test: require.resolve('snapsvg/dist/snap.svg.js'),
-      //   use: 'imports-loader?this=>window,fix=>module.exports=0',
-      // }
     ]
   }
 }
-
-// module: {
-//   rules: [
-//     {
-//       test: require.resolve('snapsvg/dist/snap.svg.js'),
-//       use: 'imports-loader?this=>window,fix=>module.exports=0',
-//     },
-//   ],
-// },
-// resolve: {
-//   alias: {
-//     snapsvg: 'snapsvg/dist/snap.svg.js',
-//   },
-// },
