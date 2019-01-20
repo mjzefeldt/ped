@@ -10,15 +10,18 @@ const AuthForm = props => {
   return (
     <div>
       <h2>Welcome Back - Wake up your Ped!</h2>
-      <a
+      {/* temporary disable while work on svg and front end components */}
+      {/* <a
         href={`https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${secrets.id()}&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fhome&scope=activity%20profile%20sleep&expires_in=604800`}
       >
         Wake up!
-      </a>
+      </a> */}
     </div>
   )
 }
 
+
+// not currently using state/dispatch containers - consider for keeping state on refresh
 /**
  * CONTAINER
  *   Note that we have two different sets of 'mapStateToProps' functions -
