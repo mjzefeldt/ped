@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
+import SnapTest from './snap'
 // temporary disable while work on svg and front end components
 // import {fetchActivitySteps, fetchSleepLog, fetchSleepGoal} from '../store'
 
@@ -44,7 +45,8 @@ export class ActivityContainer extends Component {
         <button type="button" onClick={this.handleSleepGoal}>
           Get Sleep Goal
         </button> */}
-        
+
+        <SnapTest />
       </Fragment>
     )
   }

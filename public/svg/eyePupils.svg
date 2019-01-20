@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175 35">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #00363a;
+      }
+    </style>
+  </defs>
+  <title>Asset 10</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="ped">
+      <g id="eyePupils">
+        <circle id="left_pupil" class="cls-1" cx="17.5" cy="17.5" r="17.5"/>
+        <circle id="right_pupil" class="cls-1" cx="157.5" cy="17.5" r="17.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

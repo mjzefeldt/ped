@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97 42">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #9a0;
+      }
+
+      .cls-2 {
+        fill: #cddc39;
+      }
+    </style>
+  </defs>
+  <title>Asset 6</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="ped">
+      <g id="right_bottom_lid">
+        <g id="bottom_bottom_lid">
+          <path class="cls-1" d="M96,5.24C96,28.73,75.29,39,48.5,39S1,28.73,1,5.24C1-6.5,24.25,5.16,48.5,5.16S96-6.5,96,5.24Z"/>
+        </g>
+        <g id="back_bottom_lid">
+          <path class="cls-1" d="M97,8.24C97,31.73,75.85,42,48.5,42S0,31.73,0,8.24C0-3.5,23.74,8.16,48.5,8.16S97-3.5,97,8.24Z"/>
+        </g>
+        <g id="top_bottom_lid">
+          <path class="cls-2" d="M96,7.24C96,30.73,75.29,41,48.5,41S1,30.73,1,7.24C1-4.5,24.25,7.16,48.5,7.16S96-4.5,96,7.24Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
