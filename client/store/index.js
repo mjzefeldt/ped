@@ -5,10 +5,12 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 // import user from './user'
 import fitbit from './fitbit'
 import activity from './activity'
+import sleep from './sleep'
 
 const reducer = combineReducers({
   fitbit,
-  activity
+  activity,
+  sleep
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -18,3 +20,4 @@ const store = createStore(reducer, middleware)
 export default store
 export * from './fitbit'
 export * from './activity'
+export * from './sleep'

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {currentDay} from '../helper'
+import utils from '../../helper'
 
 // ACTION TYPES
 
@@ -8,8 +8,8 @@ const GET_ACTIVITY_STEPS = 'GET_ACTIVITY_STEPS'
 // INITIAL STATE
 
 const defaultInfo = {
-    activitySteps: []
-  }
+  activitySteps: []
+}
 
 // ACTION CREATORS
 const getActivitySteps = activitySteps => ({
@@ -17,30 +17,21 @@ const getActivitySteps = activitySteps => ({
   activitySteps
 })
 
-// HEADER CREATER
-const headers = token => ({
-  Authorization: `Bearer ${token}`
-  // 'Content-Type': 'application/x-www-form-urlencoded'
-})
-
 // THUNK CREATORS
 
 export const fetchActivitySteps = userInfo => async dispatch => {
-  const header = headers(userInfo.token)
+  const currentDay = utils.currentDay()
+  const weekAgo = utils.previousWeek(currentDay)
   try {
     const {data} = await axios.get(
-      `https://api.fitbit.com/1/user/-/activities/tracker/steps/date/2019-01-15/${currentDay()}.json`,
-      {headers: header}
+      `https://api.fitbit.com/1/user/-/activities/tracker/steps/date/${weekAgo}/${currentDay}.json`,
+      utils.headers(userInfo.token)
     )
-    console.log(data[`activities-tracker-steps`], '<<< the data')
-    // dispatch(getActivitySteps(data))
+    dispatch(getActivitySteps(data[`activities-tracker-steps`]))
   } catch (err) {
-    console.error(err, '<<< ERROR in fetchFitInfo thunk')
+    console.error(err, '<<< ERROR in fetchActivitySteps thunk')
   }
 }
-// an array of arrays[100 at a time] of objects
-// [[{}, {}, {}..], [], []]
-// REDUCER
 
 export default function(state = defaultInfo, action) {
   switch (action.type) {

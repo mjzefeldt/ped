@@ -44,6 +44,7 @@
     "express-session": "^1.15.1",
     "fetch": "^1.1.0",
     "history": "^4.6.3",
+    "moment": "^2.23.0",
     "morgan": "^1.9.1",
     "passport": "^0.3.2",
     "passport-fitbit-oauth2": "^1.0.2",
