@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {currentDay} from '../helper'
 
 // ACTION TYPES
 
@@ -6,7 +7,9 @@ const GET_ACTIVITY_STEPS = 'GET_ACTIVITY_STEPS'
 
 // INITIAL STATE
 
-const defaultInfo = {activitySteps: {}}
+const defaultInfo = {
+    activitySteps: []
+  }
 
 // ACTION CREATORS
 const getActivitySteps = activitySteps => ({
@@ -23,12 +26,10 @@ const headers = token => ({
 // THUNK CREATORS
 
 export const fetchActivitySteps = userInfo => async dispatch => {
-  // console.log(userInfo.user, userInfo.token, '<<<<hitting thunk')
   const header = headers(userInfo.token)
-  // console.log(header, '<<< header')
   try {
     const {data} = await axios.get(
-      'https://api.fitbit.com/1/user/-/activities/tracker/steps/date/2017-01-01/2019-01-17.json',
+      `https://api.fitbit.com/1/user/-/activities/tracker/steps/date/2019-01-15/${currentDay()}.json`,
       {headers: header}
     )
     console.log(data[`activities-tracker-steps`], '<<< the data')

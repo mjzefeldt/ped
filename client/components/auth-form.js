@@ -1,7 +1,7 @@
 import React from 'react'
 // import {connect} from 'react-redux'
 // import {auth} from '../store'
-import {FITBIT_CLIENT_ID} from '../secrets'
+
 
 /**
  * COMPONENT
@@ -11,7 +11,7 @@ const AuthForm = props => {
     <div>
       <h2>Welcome Back - Wake up your Ped!</h2>
       <a
-        href={`https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${FITBIT_CLIENT_ID}&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fhome&scope=activity%20profile%20sleep&expires_in=604800`}
+        href={`https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${`22DB9Q`}&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fhome&scope=activity%20profile%20sleep&expires_in=604800`}
       >
         Wake up!
       </a>
