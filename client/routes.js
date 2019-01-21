@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import {Login, UserHome} from './components'
+import {AuthForm, WakeUp, UserHome} from './components'
 
 class Routes extends Component {
   // componentDidMount() {
@@ -14,7 +14,8 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes places here are avaialable without fitbit user authentication */}
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={AuthForm} />
+        <Route exact path="/wakeup" component={WakeUp} />
 
         {/* Routes placed here are available after fitbit user authentication */}
         {/* {isLoggedIn && */}
@@ -25,15 +26,17 @@ class Routes extends Component {
   }
 }
 
-{/* temporary disable while work on svg and front end components */}
-// const mapState = state => {
-//   return {
-//     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
-//     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    
-//     isLoggedIn: !!state.fitbit.fitInfo.user
-//   }
-// }
+{
+  /* temporary disable while work on svg and front end components */
+}
+const mapState = state => {
+  return {
+    // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
+    // Otherwise, state.user will be an empty object, and state.user.id will be falsey
+
+    isLoggedIn: !!state.fitbit.fitInfo.user
+  }
+}
 
 // const mapDispatch = dispatch => {
 //   return {
@@ -46,6 +49,8 @@ class Routes extends Component {
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
 
-{/* temporary disable while work on svg and front end components */}
-// export default withRouter(connect(mapState)(Routes))
-export default withRouter(Routes)
+{
+  /* temporary disable while work on svg and front end components */
+}
+export default withRouter(connect(mapState)(Routes))
+// export default withRouter(Routes)
