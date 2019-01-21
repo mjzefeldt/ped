@@ -33,11 +33,11 @@ form div {
 }
 
 .cls-1 {
-  fill: #9a0;
+  /* fill: #9a0; */
 }
 
 .cls-2 {
-  fill: #cddc39;
+  /* fill: #cddc39; */
 }
 
 .cls-3 {
@@ -59,3 +59,60 @@ form div {
   stroke-miterlimit: 10;
   stroke-width: 3px;
 }
+
+/* .body-top {
+  fill: #cddc39;
+}
+
+.body-shadow {
+  fill: #9a0;;
+} */
+
+/* 
+.body-top-sad {
+  fill: #428e92;
+} */
+/* 
+.body-shadow-sad {
+  fill: #00363a;
+}
+
+.body-top-neutral {
+  fill: #cddc39;
+}
+
+.body-shadow-neutral {
+  fill: #9a0;
+} */
+
+/* .body-top-happy {
+  fill: #ffff4d;
+}
+
+.body-shadow-happy {
+  fill: #ffd54d;
+}
+
+.hair-front-sad {
+  fill: #428e92;
+}
+
+.hair-back-sad {
+  fill: #00363a;
+}
+
+.hair-front-neutral {
+  fill: #cddc39;
+}
+
+.hair-back-neutral {
+  fill: #9a0;
+}
+
+.hair-front-happy {
+  fill: #ffff4d;
+}
+
+.hair-back-happy {
+  fill: #ffd54d;
+} */

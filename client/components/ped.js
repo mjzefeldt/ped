@@ -1,12 +1,33 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 
 const Ped = props => {
   return (
-    <svg id="ped" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 434 707.77">
+    <svg
+      id="ped"
+      width="70%"
+      height="400"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 434 707.77"
+    >
       <defs />
+      <title>snapsvg_ped_003</title>
       <g id="body">
-        <ellipse className="cls-1" cx="217" cy="419.77" rx="217" ry="288" />
-        <ellipse className="cls-2" cx="217" cy="397.77" rx="217" ry="288" />
+        <ellipse
+          id="body-shadow"
+          className="cls-1 body-shadow"
+          cx="217"
+          cy="419.77"
+          rx="217"
+          ry="288"
+        />
+        <ellipse
+          id="body-top"
+          className="cls-2 body-top"
+          cx="217"
+          cy="397.77"
+          rx="217"
+          ry="288"
+        />
         <path
           id="body_highlight"
           className="cls-3"
@@ -15,8 +36,9 @@ const Ped = props => {
         />
       </g>
       <g id="hair">
-        <g id="hair-2" data-name="hair">
+        <g id="hair-2">
           <path
+            id="hairBack"
             className="cls-1"
             d="M953,292c-55.07,0-53-106-22-129s81-80,63-32c-15.09,40.24-74.94,114-16,59,60-56,80-91,59-8-20.17,79.72-113,71-30,69C1059.76,249.73,968,292,953,292Z"
             transform="translate(-743 -111.23)"
@@ -69,12 +91,14 @@ const Ped = props => {
       </g>
       <path
         id="mouth_sad"
+        opacity="0"
         className="cls-6"
         d="M900.5,555s20.54-26.26,67.6-25.51S1022,555,1022,555"
         transform="translate(-743 -111.23)"
       />
       <line
         id="mouth_neutral"
+        opacity="100"
         className="cls-6"
         x1="168.5"
         y1="430.27"
@@ -83,12 +107,13 @@ const Ped = props => {
       />
       <path
         id="mouth_happy"
+        opacity="0"
         className="cls-6"
         d="M897.5,521.5c26,16,41,18,70,18s38.5-4.5,52-18"
         transform="translate(-743 -111.23)"
       />
       <g id="left_bottom_lid">
-        <g id="bottom_bottom_lid">
+        <g id="bottom_bottom_lid" opacity="0">
           <path
             className="cls-1"
             d="M939,396.24c0,23.49-20.71,33.76-47.5,33.76S844,419.73,844,396.24c0-11.74,23.25-.08,47.5-.08S939,384.5,939,396.24Z"
@@ -102,7 +127,7 @@ const Ped = props => {
             transform="translate(-743 -111.23)"
           />
         </g>
-        <g id="top_bottom_lid-2" dataName="top_bottom_lid">
+        <g id="top_bottom_lid-2">
           <path
             className="cls-2"
             d="M939,398.24c0,23.49-20.71,33.76-47.5,33.76S844,421.73,844,398.24c0-11.74,23.25-.08,47.5-.08S939,386.5,939,398.24Z"
@@ -110,7 +135,7 @@ const Ped = props => {
           />
         </g>
       </g>
-      <g id="left_top_lid">
+      <g id="left_top_lid" opacity="0">
         <g id="bottom_top_lid">
           <path
             className="cls-1"
@@ -125,7 +150,7 @@ const Ped = props => {
             transform="translate(-743 -111.23)"
           />
         </g>
-        <g id="top_top_lid-2" data-name="top_top_lid">
+        <g id="top_top_lid-2">
           <path
             className="cls-2"
             d="M939,389.45c0,30.07-97,30.07-97,0S863.71,335,890.5,335,939,359.38,939,389.45Z"
@@ -133,8 +158,8 @@ const Ped = props => {
           />
         </g>
       </g>
-      <g id="right_bottom_lid">
-        <g id="bottom_bottom_lid-2" data-name="bottom_bottom_lid">
+      <g id="right_bottom_lid" opacity="0">
+        <g id="bottom_bottom_lid-2">
           <path
             className="cls-1"
             d="M1078,396.24c0,23.49-20.71,33.76-47.5,33.76S983,419.73,983,396.24c0-11.74,23.25-.08,47.5-.08S1078,384.5,1078,396.24Z"
@@ -148,7 +173,7 @@ const Ped = props => {
             transform="translate(-743 -111.23)"
           />
         </g>
-        <g id="top_bottom_lid-3" data-name="top_bottom_lid">
+        <g id="top_bottom_lid-3">
           <path
             className="cls-2"
             d="M1078,398.24c0,23.49-20.71,33.76-47.5,33.76S983,421.73,983,398.24c0-11.74,23.25-.08,47.5-.08S1078,386.5,1078,398.24Z"
@@ -156,8 +181,8 @@ const Ped = props => {
           />
         </g>
       </g>
-      <g id="right_top_lid">
-        <g id="bottom_top_lid-2" data-name="bottom_top_lid">
+      <g id="right_top_lid" opacity="0">
+        <g id="bottom_top_lid-2">
           <path
             className="cls-1"
             d="M1078,391.45c0,30.07-97,30.07-97,0S1002.71,337,1029.5,337,1078,361.38,1078,391.45Z"
@@ -171,7 +196,7 @@ const Ped = props => {
             transform="translate(-743 -111.23)"
           />
         </g>
-        <g id="top_top_lid-3" data-name="top_top_lid">
+        <g id="top_top_lid-3">
           <path
             className="cls-2"
             d="M1078,389.45c0,30.07-97,30.07-97,0S1002.71,335,1029.5,335,1078,359.38,1078,389.45Z"
