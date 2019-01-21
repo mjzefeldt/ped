@@ -2,33 +2,33 @@ import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import MyPed from './my-ped'
 import utils from '../../helper'
-// temporary disable while work on svg and front end components
-// import {fetchActivitySteps, fetchSleepLog, fetchSleepGoal} from '../store'
+
+const defaultState = {
+  // in actual datapull will need to reverse sleep array from way it loads reverse()
+  sleep: [
+    {dateOfSleep: '2019-01-14', minutesAsleep: 0},
+    {dateOfSleep: '2019-01-15', minutesAsleep: 0},
+    {dateOfSleep: '2019-01-16', minutesAsleep: 0},
+    {dateOfSleep: '2019-01-17', minutesAsleep: 301},
+    {dateOfSleep: '2019-01-18', minutesAsleep: 244},
+    {dateOfSleep: '2019-01-19', minutesAsleep: 634},
+    {dateOfSleep: '2019-01-20', minutesAsleep: 208}
+  ],
+  goal: {
+    minDuration: 465
+  },
+  currentDate: 5 // num that will correspond with sleep index or activity index - default on initial load to today
+  // will only have 6 days of data
+}
 
 export class ActivityContainer extends Component {
-  // may need local state for ped slider interaction
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      // wwill need to reverse sleep array from way it loads reverse()
-      sleep: [
-        {dateOfSleep: '2019-01-14', minutesAsleep: 0},
-        {dateOfSleep: '2019-01-15', minutesAsleep: 0},
-        {dateOfSleep: '2019-01-16', minutesAsleep: 0},
-        {dateOfSleep: '2019-01-17', minutesAsleep: 301},
-        {dateOfSleep: '2019-01-18', minutesAsleep: 244},
-        {dateOfSleep: '2019-01-19', minutesAsleep: 634},
-        {dateOfSleep: '2019-01-20', minutesAsleep: 208}
-      ],
-      goal: {
-        minDuration: 465
-      },
-      currentDate: 6 // num that will correspond with sleep index or activity index - default on initial load to today
+      sleep: this.props.sleep,
+      goal: this.props.goal,
+      currentDate: 5
     }
-    // temporary disable while work on svg and front end components
-    // this.handleActivity = this.handleActivity.bind(this)
-    // this.handleSleep = this.handleSleep.bind(this)
-    // this.handleSleepGoal = this.handleSleepGoal.bind(this)
     this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(
       this
     )
@@ -37,10 +37,12 @@ export class ActivityContainer extends Component {
 
   componentDidMount() {
     console.log('ActivityContainer mounted')
-    // this.props.fetchActivitySteps(this.props.userInfo)
-    // this.props.fetchSleepLog(this.props.userInfo)
-    // this.props.fetchSleepGoal(this.props.userInfo)
     this.hydrateStateWithLocalStorage()
+    // ???
+    // this.setState({
+    //   sleep: this.props.sleep,
+    //   goal: this.props.goal
+    // })
   }
 
   handleSlideChange(evt) {
@@ -63,20 +65,8 @@ export class ActivityContainer extends Component {
     }
   }
 
-  // temporary disable while work on svg and front end components
-  // this should load in a componentDidMount to get store going and then populate state
-  // handleActivity() {
-  //   this.props.fetchActivitySteps(this.props.userInfo)
-  // }
-  // handleSleep() {
-  //   this.props.fetchSleepLog(this.props.userInfo)
-  // }
-  // handleSleepGoal() {
-  //   this.props.fetchSleepGoal(this.props.userInfo)
-  // }
-
   render() {
-    console.log(this.props.userInfo, '<<<User Info props activity container')
+    console.log(this.props, '<<< props activity container')
     const sleepGoal = this.state.goal.minDuration / 3
     const currentSleepAmount = this.state.sleep[this.state.currentDate]
       .minutesAsleep
@@ -84,19 +74,8 @@ export class ActivityContainer extends Component {
     return (
       <Fragment>
         <div>
-          {/* temporary disable while work on svg and front end components */}
-          {/* <button type="button" onClick={this.handleActivity}>
-            Get Activity
-          </button>
-          <button type="button" onClick={this.handleSleep}>
-            Get Sleep Log
-          </button>
-          <button type="button" onClick={this.handleSleepGoal}>
-            Get Sleep Goal
-          </button> */}
-
           <MyPed bodyColors={bodyColors} />
-          {/* need slider component to default to most recent day [6] of array[7]
+          {/* need slider component to default to most recent day [5] of array[6] only have 6 days data
           slides to other days to manipulate this.state.currentDate */}
           <div>
             <input
@@ -128,25 +107,15 @@ export class ActivityContainer extends Component {
   }
 }
 
-// pull in data from store to populate local state
-// const mapState = state => {
-//     return {
-// days:
-// data:
-// userInfo: state.fitbit.fitInfo
-//     }
-// }
-
+// checking if passing in as props from user home - reached rate limit and can't verify at moment
+// if that works delete this
 const mapState = state => {
   return {
-    userInfo: state.fitbit.fitInfo
+    userInfo: state.fitbit.fitInfo,
+    sleep: state.sleep.sleep,
+    goal: state.sleep.goal
   }
 }
 
-const mapDispatch = dispatch => ({
-  // fetchActivitySteps: userInfo => dispatch(fetchActivitySteps(userInfo)),
-  // fetchSleepLog: userInfo => dispatch(fetchSleepLog(userInfo)),
-  // fetchSleepGoal: userInfo => dispatch(fetchSleepGoal(userInfo))
-})
-
-export default connect(mapState, mapDispatch)(ActivityContainer)
+// export default connect(mapState)(ActivityContainer)
+export default ActivityContainer

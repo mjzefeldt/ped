@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-// temporary disable while work on svg and front end components
 import {
   fetchFitInfo,
   fetchActivitySteps,
@@ -10,12 +9,6 @@ import {
 import ActivityContainer from './activity-container'
 
 export class UserHome extends Component {
-  // unlikely will need local state here - keep until sure
-  // constructor() {
-  //   super()
-  // }
-
-  // temporary disable while work on svg and front end components
   componentDidMount() {
     const url = window.location.href
     const user = url
@@ -37,7 +30,6 @@ export class UserHome extends Component {
   }
 
   render() {
-    // temporary disable while work on svg and front end components
     const userInfo = this.props.userInfo
     return (
       <Fragment>
@@ -45,11 +37,12 @@ export class UserHome extends Component {
           <header className="center">
             <h3>Welcome! Fitbit OAuth worked!</h3>
           </header>
-          {/* pass in user info into ActivityContainer so have userInfo as props for fetches to fitbit api */}
-          {/* temporary disable while work on svg and front end components */}
-          {/* <ActivityContainer userInfo={userInfo} /> */}
           <main className="center">
-            <ActivityContainer />
+            {/* This may be working - reached rate limit and can't verify */}
+            <ActivityContainer
+              sleep={this.props.sleep}
+              goal={this.props.goal}
+            />
           </main>
         </div>
       </Fragment>
@@ -57,20 +50,16 @@ export class UserHome extends Component {
   }
 }
 
-{
-  /* temporary disable while work on svg and front end components */
-}
 const mapState = state => {
   return {
     user: state.fitbit.fitInfo.user,
     token: state.fitbit.fitInfo.token,
     userInfo: state.fitbit.fitInfo
+    // sleep: state.sleep.sleep, //cant do this here bc of component didUpdate...
+    // goal: state.sleep.goal,
   }
 }
 
-{
-  /* temporary disable while work on svg and front end components */
-}
 const mapDispatch = dispatch => ({
   fetchFitInfo: fitInfo => dispatch(fetchFitInfo(fitInfo)),
   fetchActivitySteps: userInfo => dispatch(fetchActivitySteps(userInfo)),
@@ -78,8 +67,5 @@ const mapDispatch = dispatch => ({
   fetchSleepGoal: userInfo => dispatch(fetchSleepGoal(userInfo))
 })
 
-{
-  /* temporary disable while work on svg and front end components */
-}
 export default connect(mapState, mapDispatch)(UserHome)
 // export default UserHome
