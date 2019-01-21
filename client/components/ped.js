@@ -14,7 +14,7 @@ const Ped = props => {
       <g id="body">
         <ellipse
           id="body-shadow"
-          className="cls-1"
+          className="cls-1 body-shadow"
           cx="217"
           cy="419.77"
           rx="217"
@@ -22,7 +22,7 @@ const Ped = props => {
         />
         <ellipse
           id="body-top"
-          className="cls-2"
+          className="cls-2 body-top"
           cx="217"
           cy="397.77"
           rx="217"

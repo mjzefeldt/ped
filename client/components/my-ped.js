@@ -5,10 +5,10 @@ import Ped from './ped'
 export class MyPed extends Component {
   componentDidMount() {
     const {bodyTop, bodyShadow, hairFront, hairBack} = this.props.bodyColors
-    document.getElementById('body-shadow').setAttribute('class', bodyShadow)
-    document.getElementById('body-top').setAttribute('class', bodyTop)
-    document.getElementById('hairBack').setAttribute('class', hairBack)
-    document.getElementById('hairFront').setAttribute('class', hairFront)
+    document.getElementById('body-shadow').setAttribute('fill', bodyShadow)
+    document.getElementById('body-top').setAttribute('fill', bodyTop)
+    document.getElementById('hairBack').setAttribute('fill', hairBack)
+    document.getElementById('hairFront').setAttribute('fill', hairFront)
   }
   render() {
     return (

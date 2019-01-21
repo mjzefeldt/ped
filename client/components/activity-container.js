@@ -12,7 +12,7 @@ export class ActivityContainer extends Component {
       sleep: [
         {
           dateOfSleep: '2019-01-19',
-          minutesAsleep: 400
+          minutesAsleep: 250
         }
       ],
       goal: {
@@ -44,18 +44,34 @@ export class ActivityContainer extends Component {
       .minutesAsleep
     let bodyShadow
     let bodyTop
+    const colorKey = {
+      sad: {
+        top: '#428e92',
+        bottom: '#00363a'
+      },
+      neutral: {
+        top: '#cddc39',
+        bottom: '#9a0'
+      },
+      happy: {
+        top: '#ffff4d',
+        bottom: '#ffd54d'
+      }
+    }
+
     const sleepColorSetter = (goal, currentAmount) => {
       let mood
-      if (currentSleepAmount < sleepGoal) mood = 'sad'
-      else if (currentSleepAmount < sleepGoal * 2)
+      if (currentAmount < goal) mood = 'sad'
+      else if (currentAmount < goal * 2)
         // class for ped will be sad and sickly
         mood = 'neutral' // class for ped will be neutral - eh
       else mood = 'happy' // class for ped will be health and happy
+
       return {
-        bodyTop: `body-top-${mood}`,
-        bodyShadow: `body-shadow-${mood}`,
-        hairFront: `hair-front-${mood}`,
-        hairBack: `hair-back-${mood}`
+        bodyTop: colorKey[mood].top,
+        bodyShadow: colorKey[mood].bottom,
+        hairFront: colorKey[mood].top,
+        hairBack: colorKey[mood].bottom
       }
     }
     const bodyColors = sleepColorSetter(sleepGoal, currentSleepAmount)
