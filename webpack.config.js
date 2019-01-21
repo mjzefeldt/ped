@@ -20,6 +20,20 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.svg$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'svg-react-loader',
+          options: {
+            tag: 'symbol',
+            attrs: {
+              title: 'snapsvg_ped_003'
+            },
+            name: 'MyPed'
+          }
+        }
       }
     ]
   }

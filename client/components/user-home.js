@@ -31,19 +31,24 @@ export class UserHome extends Component {
     return (
       <Fragment>
         <div>
-          <h3>Welcome! Fitbit OAuth worked!</h3>
+          <header className="center">
+            <h3>Welcome! Fitbit OAuth worked!</h3>
+          </header>
+          {/* pass in user info into ActivityContainer so have userInfo as props for fetches to fitbit api */}
+          {/* temporary disable while work on svg and front end components */}
+          {/* <ActivityContainer userInfo={userInfo} /> */}
+          <main className="center">
+            <ActivityContainer />
+          </main>
         </div>
-        {/* pass in user info into ActivityContainer so have userInfo as props for fetches to fitbit api */}
-        {/* temporary disable while work on svg and front end components */}
-        {/* <ActivityContainer userInfo={userInfo} /> */}
-        <ActivityContainer />
       </Fragment>
     )
   }
 }
 
-
-{/* temporary disable while work on svg and front end components */}
+{
+  /* temporary disable while work on svg and front end components */
+}
 // const mapState = state => {
 //   return {
 //     user: state.fitbit.fitInfo.user,
@@ -52,11 +57,15 @@ export class UserHome extends Component {
 //   }
 // }
 
-{/* temporary disable while work on svg and front end components */}
+{
+  /* temporary disable while work on svg and front end components */
+}
 // const mapDispatch = dispatch => ({
 //   fetchFitInfo: fitInfo => dispatch(fetchFitInfo(fitInfo))
 // })
 
-{/* temporary disable while work on svg and front end components */}
+{
+  /* temporary disable while work on svg and front end components */
+}
 // export default connect(mapState, mapDispatch)(UserHome)
 export default UserHome

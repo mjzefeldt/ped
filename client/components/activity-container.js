@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
+import MyPed from './my-ped'
 // temporary disable while work on svg and front end components
 // import {fetchActivitySteps, fetchSleepLog, fetchSleepGoal} from '../store'
 
@@ -32,19 +33,20 @@ export class ActivityContainer extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Activity Container</h2>
+        <div>
+          {/* temporary disable while work on svg and front end components */}
+          {/* <button type="button" onClick={this.handleActivity}>
+            Get Activity
+          </button>
+          <button type="button" onClick={this.handleSleep}>
+            Get Sleep Log
+          </button>
+          <button type="button" onClick={this.handleSleepGoal}>
+            Get Sleep Goal
+          </button> */}
 
-        {/* temporary disable while work on svg and front end components */}
-        {/* <button type="button" onClick={this.handleActivity}>
-          Get Activity
-        </button>
-        <button type="button" onClick={this.handleSleep}>
-          Get Sleep Log
-        </button>
-        <button type="button" onClick={this.handleSleepGoal}>
-          Get Sleep Goal
-        </button> */}
-        
+          <MyPed />
+        </div>
       </Fragment>
     )
   }

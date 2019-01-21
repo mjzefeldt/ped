@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 434 707.77">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #9a0;
+      }
+
+      .cls-2 {
+        fill: #cddc39;
+      }
+
+      .cls-3 {
+        fill: #ffff6e;
+        opacity: 0.52;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-5 {
+        fill: #00363a;
+      }
+
+      .cls-6 {
+        fill: none;
+        stroke: #00363a;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <title>Asset 14</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="ped">
+      <g id="body">
+        <g id="body_bottom">
+          <ellipse class="cls-1" cx="217" cy="419.77" rx="217" ry="288"/>
+        </g>
+        <g id="body_top">
+          <ellipse class="cls-2" cx="217" cy="397.77" rx="217" ry="288"/>
+        </g>
+        <path id="body_highlight" class="cls-3" d="M153.59,137C101,161,81.5,190,65.86,214.33c-17.15,26.65,23.62-.56,28.8-4.65C120.54,189.26,166.11,131.26,153.59,137Z"/>
+      </g>
+      <g id="hair">
+        <g id="hairBack">
+          <path class="cls-1" d="M210,180.77c-55.07,0-53-106-22-129s81-80,63-32c-15.09,40.23-74.94,114-16,59,60-56,80-91,59-8-20.17,79.72-113,71-30,69C316.76,138.5,225,180.77,210,180.77Z"/>
+        </g>
+        <path id="hairFront" class="cls-2" d="M208,175.77c-55.07,0-53-106-22-129s83-71,63-32c-19.61,38.24-74.94,114-16,59,60-56,83.73-82.45,59-8-25.92,78-91.44,61-30,69C314.33,141.6,223,175.77,208,175.77Z"/>
+        <path id="hair_highlight" class="cls-3" d="M250.6,7.36C238.68,13.52,220.79,21.77,205,37s-26.45,26.9-26,30.79,18-9,31-23C222.66,31.14,250.6,7.36,250.6,7.36Z"/>
+      </g>
+      <g id="eyeBalls">
+        <circle id="left_eyeBall" class="cls-4" cx="147" cy="272.77" r="44"/>
+        <circle id="right_eyeBall" class="cls-4" cx="287" cy="272.77" r="44"/>
+      </g>
+      <g id="eyePupils">
+        <circle id="left_pupil" class="cls-5" cx="146.5" cy="272.27" r="17.5"/>
+        <circle id="right_pupil" class="cls-5" cx="286.5" cy="272.27" r="17.5"/>
+      </g>
+      <path id="mouth_happy" class="cls-6" d="M154.5,410.27c26,16,41,18,70,18s38.5-4.5,52-18"/>
+    </g>
+  </g>
+</svg>

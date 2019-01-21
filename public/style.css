@@ -19,3 +19,43 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.center {
+  margin: auto;
+  width: 100%;
+  border: 3px solid green;
+  padding: 10px;
+  text-align: center;
+}
+
+.center h2 {
+  margin: auto;
+}
+
+.cls-1 {
+  fill: #9a0;
+}
+
+.cls-2 {
+  fill: #cddc39;
+}
+
+.cls-3 {
+  fill: #ffff6e;
+  opacity: 0.52;
+}
+
+.cls-4 {
+  fill: #fff;
+}
+
+.cls-5 {
+  fill: #00363a;
+}
+
+.cls-6 {
+  fill: none;
+  stroke: #00363a;
+  stroke-miterlimit: 10;
+  stroke-width: 3px;
+}

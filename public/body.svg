@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 434 598">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #9a0;
+      }
+
+      .cls-2 {
+        fill: #cddc39;
+      }
+
+      .cls-3 {
+        fill: #ffff6e;
+        opacity: 0.52;
+      }
+    </style>
+  </defs>
+  <title>Asset 1</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="ped">
+      <g id="body">
+        <g id="body_bottom">
+          <ellipse class="cls-1" cx="217" cy="310" rx="217" ry="288"/>
+        </g>
+        <g id="body_top">
+          <ellipse class="cls-2" cx="217" cy="288" rx="217" ry="288"/>
+        </g>
+        <path id="body_highlight" class="cls-3" d="M153.59,27.21c-52.6,24-72.09,53-87.73,77.35-17.15,26.65,23.62-.55,28.8-4.65C120.54,79.49,166.11,21.49,153.59,27.21Z"/>
+      </g>
+    </g>
+  </g>
+</svg>
