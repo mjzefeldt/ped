@@ -55,11 +55,10 @@ const colorKey = {
 utils.sleepColorSetter = (goal, currentAmount) => {
   let mood
   if (currentAmount < goal) mood = 'sad'
-  else if (currentAmount < goal * 2)
+  else if (currentAmount < goal + goal / 2)
     // class for ped will be sad and sickly
     mood = 'neutral' // class for ped will be neutral - eh
   else mood = 'happy' // class for ped will be health and happy
-
   return {
     bodyTop: colorKey[mood].top,
     bodyShadow: colorKey[mood].bottom,

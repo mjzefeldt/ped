@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import {Login, UserHome} from './components'
+import {AuthForm, WakeUp, UserHome} from './components'
 
 class Routes extends Component {
   // componentDidMount() {
@@ -14,7 +14,8 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes places here are avaialable without fitbit user authentication */}
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={AuthForm} />
+        <Route exact path="/wakeup" component={WakeUp} />
 
         {/* Routes placed here are available after fitbit user authentication */}
         {/* {isLoggedIn && */}

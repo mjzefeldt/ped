@@ -46,8 +46,8 @@ export const fetchSleepGoal = userInfo => async dispatch => {
       `https://api.fitbit.com/1/user/-/sleep/goal.json`,
       utils.headers(userInfo.token)
     )
-    console.log(data, '<<< the goal')
-    dispatch(getSleepGoal(data))
+    const goal = data.goal
+    dispatch(getSleepGoal(goal))
   } catch (err) {
     console.error(err, '<<< ERROR in fetchSleepGoal thunk')
   }

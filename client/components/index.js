@@ -5,5 +5,8 @@
  */
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
-export {Login} from './auth-form'
+export {default as AuthForm} from './auth-form'
+export {default as WakeUp} from './wake-up'
 export {default as ActivityContainer} from './activity-container'
+export {default as MyPed} from './my-ped'
+export {default as Ped} from './ped'
