@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import MyPed from './my-ped'
+import utils from '../../helper'
 // temporary disable while work on svg and front end components
 // import {fetchActivitySteps, fetchSleepLog, fetchSleepGoal} from '../store'
 
@@ -9,23 +10,34 @@ export class ActivityContainer extends Component {
   constructor() {
     super()
     this.state = {
+      // wwill need to reverse sleep array from way it loads reverse()
       sleep: [
-        {
-          dateOfSleep: '2019-01-19',
-          minutesAsleep: 250
-        }
+        {dateOfSleep: '2019-01-14', minutesAsleep: 0},
+        {dateOfSleep: '2019-01-15', minutesAsleep: 0},
+        {dateOfSleep: '2019-01-16', minutesAsleep: 0},
+        {dateOfSleep: '2019-01-17', minutesAsleep: 301},
+        {dateOfSleep: '2019-01-18', minutesAsleep: 244},
+        {dateOfSleep: '2019-01-19', minutesAsleep: 634},
+        {dateOfSleep: '2019-01-20', minutesAsleep: 208}
       ],
       goal: {
         minDuration: 465
       },
-      currentDay: 0 // num that will correspond with sleep index or activity index
+      currentDate: 6 // num that will correspond with sleep index or activity index - default on initial load to today
     }
     // temporary disable while work on svg and front end components
     // this.handleActivity = this.handleActivity.bind(this)
     // this.handleSleep = this.handleSleep.bind(this)
     // this.handleSleepGoal = this.handleSleepGoal.bind(this)
+    this.handleSlideChange = this.handleSlideChange.bind(this)
   }
 
+  handleSlideChange(evt) {
+    // evt.preventDefault()
+    console.log('htting handler', evt.target.value)
+    const day = parseInt(evt.target.value, 10)
+    this.setState({currentDate: day})
+  }
   // temporary disable while work on svg and front end components
   // this should load in a componentDidMount to get store going and then populate state
   // handleActivity() {
@@ -40,41 +52,9 @@ export class ActivityContainer extends Component {
 
   render() {
     const sleepGoal = this.state.goal.minDuration / 3
-    const currentSleepAmount = this.state.sleep[this.state.currentDay]
+    const currentSleepAmount = this.state.sleep[this.state.currentDate]
       .minutesAsleep
-    let bodyShadow
-    let bodyTop
-    const colorKey = {
-      sad: {
-        top: '#428e92',
-        bottom: '#00363a'
-      },
-      neutral: {
-        top: '#cddc39',
-        bottom: '#9a0'
-      },
-      happy: {
-        top: '#ffff4d',
-        bottom: '#ffd54d'
-      }
-    }
-
-    const sleepColorSetter = (goal, currentAmount) => {
-      let mood
-      if (currentAmount < goal) mood = 'sad'
-      else if (currentAmount < goal * 2)
-        // class for ped will be sad and sickly
-        mood = 'neutral' // class for ped will be neutral - eh
-      else mood = 'happy' // class for ped will be health and happy
-
-      return {
-        bodyTop: colorKey[mood].top,
-        bodyShadow: colorKey[mood].bottom,
-        hairFront: colorKey[mood].top,
-        hairBack: colorKey[mood].bottom
-      }
-    }
-    const bodyColors = sleepColorSetter(sleepGoal, currentSleepAmount)
+    const bodyColors = utils.sleepColorSetter(sleepGoal, currentSleepAmount)
     return (
       <Fragment>
         <div>
@@ -91,7 +71,30 @@ export class ActivityContainer extends Component {
 
           <MyPed bodyColors={bodyColors} />
           {/* need slider component to default to most recent day [6] of array[7]
-          slides to other days to manipulate this.state.currentDay */}
+          slides to other days to manipulate this.state.currentDate */}
+          <div>
+            <input
+              type="range"
+              id="date"
+              name="date"
+              min="0"
+              max="6"
+              step="1"
+              list="tickMarks"
+              onChange={evt => this.handleSlideChange(evt, this.value)}
+            />
+            {/* label={this.state.sleep[0].dateOfSleep} - not supported in Chrome :-(  */}
+            <datalist id="tickMarks">
+              <option value="0" label={this.state.sleep[0].dateOfSleep} />
+              <option value="1" label={this.state.sleep[1].dateOfSleep} />
+              <option value="2" label={this.state.sleep[2].dateOfSleep} />
+              <option value="3" label={this.state.sleep[3].dateOfSleep} />
+              <option value="4" label={this.state.sleep[4].dateOfSleep} />
+              <option value="5" label={this.state.sleep[5].dateOfSleep} />
+              <option value="6" label={this.state.sleep[6].dateOfSleep} />
+            </datalist>
+            <label htmlFor="date">Date</label>
+          </div>
         </div>
       </Fragment>
     )
