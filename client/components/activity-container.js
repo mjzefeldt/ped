@@ -29,15 +29,36 @@ export class ActivityContainer extends Component {
     // this.handleActivity = this.handleActivity.bind(this)
     // this.handleSleep = this.handleSleep.bind(this)
     // this.handleSleepGoal = this.handleSleepGoal.bind(this)
+    this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(
+      this
+    )
     this.handleSlideChange = this.handleSlideChange.bind(this)
   }
 
+  componentDidMount() {
+    this.hydrateStateWithLocalStorage()
+  }
+
   handleSlideChange(evt) {
-    // evt.preventDefault()
+    evt.preventDefault()
     console.log('htting handler', evt.target.value)
     const day = parseInt(evt.target.value, 10)
+    localStorage.setItem('currentDate', day)
     this.setState({currentDate: day})
   }
+
+  hydrateStateWithLocalStorage() {
+    const key = 'currentDate'
+    if (localStorage.hasOwnProperty(key)) {
+      const value = parseInt(localStorage.getItem(key), 10)
+      try {
+        this.setState({[key]: value})
+      } catch (e) {
+        this.setState({[key]: 6}) // default value to current day
+      }
+    }
+  }
+
   // temporary disable while work on svg and front end components
   // this should load in a componentDidMount to get store going and then populate state
   // handleActivity() {
@@ -81,6 +102,7 @@ export class ActivityContainer extends Component {
               max="6"
               step="1"
               list="tickMarks"
+              defaultValue={this.state.currentDate}
               onChange={evt => this.handleSlideChange(evt, this.value)}
             />
             {/* label={this.state.sleep[0].dateOfSleep} - not supported in Chrome :-(  */}

@@ -34,7 +34,9 @@ utils.headers = token => {
     }
   }
 }
-
+//
+//
+// PED COLOR SETTER KEY AND HELPER FUNC
 const colorKey = {
   sad: {
     top: '#428e92',
