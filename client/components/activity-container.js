@@ -36,12 +36,15 @@ export class ActivityContainer extends Component {
   }
 
   componentDidMount() {
+    console.log('ActivityContainer mounted')
+    // this.props.fetchActivitySteps(this.props.userInfo)
+    // this.props.fetchSleepLog(this.props.userInfo)
+    // this.props.fetchSleepGoal(this.props.userInfo)
     this.hydrateStateWithLocalStorage()
   }
 
   handleSlideChange(evt) {
     evt.preventDefault()
-    console.log('htting handler', evt.target.value)
     const day = parseInt(evt.target.value, 10)
     localStorage.setItem('currentDate', day)
     this.setState({currentDate: day})
@@ -54,6 +57,7 @@ export class ActivityContainer extends Component {
       try {
         this.setState({[key]: value})
       } catch (e) {
+        console.error(e)
         this.setState({[key]: 6}) // default value to current day
       }
     }
@@ -72,6 +76,7 @@ export class ActivityContainer extends Component {
   // }
 
   render() {
+    console.log(this.props.userInfo, '<<<User Info props activity container')
     const sleepGoal = this.state.goal.minDuration / 3
     const currentSleepAmount = this.state.sleep[this.state.currentDate]
       .minutesAsleep
@@ -132,10 +137,16 @@ export class ActivityContainer extends Component {
 //     }
 // }
 
+const mapState = state => {
+  return {
+    userInfo: state.fitbit.fitInfo
+  }
+}
+
 const mapDispatch = dispatch => ({
-  fetchActivitySteps: userInfo => dispatch(fetchActivitySteps(userInfo)),
-  fetchSleepLog: userInfo => dispatch(fetchSleepLog(userInfo)),
-  fetchSleepGoal: userInfo => dispatch(fetchSleepGoal(userInfo))
+  // fetchActivitySteps: userInfo => dispatch(fetchActivitySteps(userInfo)),
+  // fetchSleepLog: userInfo => dispatch(fetchSleepLog(userInfo)),
+  // fetchSleepGoal: userInfo => dispatch(fetchSleepGoal(userInfo))
 })
 
-export default connect(null, mapDispatch)(ActivityContainer)
+export default connect(mapState, mapDispatch)(ActivityContainer)

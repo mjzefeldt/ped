@@ -1,7 +1,12 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 // temporary disable while work on svg and front end components
-// import {fetchFitInfo} from '../store'
+import {
+  fetchFitInfo,
+  fetchActivitySteps,
+  fetchSleepLog,
+  fetchSleepGoal
+} from '../store'
 import ActivityContainer from './activity-container'
 
 export class UserHome extends Component {
@@ -11,23 +16,29 @@ export class UserHome extends Component {
   // }
 
   // temporary disable while work on svg and front end components
-  // componentDidMount() {
-  //   const url = window.location.href
-  //   const user = url
-  //     .split('#')[1]
-  //     .split('=')[2]
-  //     .split('&')[0]
-  //   const token = url
-  //     .split('#')[1]
-  //     .split('=')[1]
-  //     .split('&')[0]
-  //   const fitInfo = {user, token}
-  //   this.props.fetchFitInfo(fitInfo)
-  // }
+  componentDidMount() {
+    const url = window.location.href
+    const user = url
+      .split('#')[1]
+      .split('=')[2]
+      .split('&')[0]
+    const token = url
+      .split('#')[1]
+      .split('=')[1]
+      .split('&')[0]
+    const fitInfo = {user, token}
+    this.props.fetchFitInfo(fitInfo)
+  }
+
+  componentDidUpdate() {
+    this.props.fetchActivitySteps(this.props.userInfo)
+    this.props.fetchSleepLog(this.props.userInfo)
+    this.props.fetchSleepGoal(this.props.userInfo)
+  }
 
   render() {
     // temporary disable while work on svg and front end components
-    // const userInfo = this.props.userInfo
+    const userInfo = this.props.userInfo
     return (
       <Fragment>
         <div>
@@ -49,23 +60,26 @@ export class UserHome extends Component {
 {
   /* temporary disable while work on svg and front end components */
 }
-// const mapState = state => {
-//   return {
-//     user: state.fitbit.fitInfo.user,
-//     token: state.fitbit.fitInfo.token,
-//     userInfo: state.fitbit.fitInfo
-//   }
-// }
+const mapState = state => {
+  return {
+    user: state.fitbit.fitInfo.user,
+    token: state.fitbit.fitInfo.token,
+    userInfo: state.fitbit.fitInfo
+  }
+}
 
 {
   /* temporary disable while work on svg and front end components */
 }
-// const mapDispatch = dispatch => ({
-//   fetchFitInfo: fitInfo => dispatch(fetchFitInfo(fitInfo))
-// })
+const mapDispatch = dispatch => ({
+  fetchFitInfo: fitInfo => dispatch(fetchFitInfo(fitInfo)),
+  fetchActivitySteps: userInfo => dispatch(fetchActivitySteps(userInfo)),
+  fetchSleepLog: userInfo => dispatch(fetchSleepLog(userInfo)),
+  fetchSleepGoal: userInfo => dispatch(fetchSleepGoal(userInfo))
+})
 
 {
   /* temporary disable while work on svg and front end components */
 }
-// export default connect(mapState, mapDispatch)(UserHome)
-export default UserHome
+export default connect(mapState, mapDispatch)(UserHome)
+// export default UserHome

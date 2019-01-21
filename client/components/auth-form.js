@@ -1,7 +1,7 @@
 import React from 'react'
 // import {connect} from 'react-redux'
 // import {auth} from '../store'
-import secrets from '../../secrets' 
+import secrets from '../../secrets'
 
 /**
  * COMPONENT
@@ -11,15 +11,14 @@ const AuthForm = props => {
     <div>
       <h2>Welcome Back - Wake up your Ped!</h2>
       {/* temporary disable while work on svg and front end components */}
-      {/* <a
+      <a
         href={`https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${secrets.id()}&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fhome&scope=activity%20profile%20sleep&expires_in=604800`}
       >
         Wake up!
-      </a> */}
+      </a>
     </div>
   )
 }
-
 
 // not currently using state/dispatch containers - consider for keeping state on refresh
 /**
