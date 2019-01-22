@@ -71,7 +71,8 @@ utils.sleepColorSetter = (goal, currentAmount) => {
     hairFront: colorKey[mood].top,
     hairBack: colorKey[mood].bottom,
     lid: colorKey[mood].lid,
-    lidHL: colorKey[mood].lidHL
+    lidHL: colorKey[mood].lidHL,
+    mood
   }
 }
 
@@ -97,10 +98,16 @@ utils.opacitySetter = (goal, currentAmount) => {
     // class for ped will be sad and sickly
     mood = 'neutral' // class for ped will be neutral - eh
   else mood = 'happy' // class for ped will be health and happy
+
   return {
     topLid: opacityLidKey[mood].topLid,
     bottomLid: opacityLidKey[mood].bottomLid
   }
+}
+
+utils.opacityGetter = (day, sleepMin, goal) => {
+  const sleepGoal = goal / 2
+  return utils.opacitySetter(sleepGoal, sleepMin)
 }
 
 module.exports = utils

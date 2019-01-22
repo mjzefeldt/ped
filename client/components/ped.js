@@ -2,7 +2,6 @@ import React from 'react'
 
 const Ped = props => {
   // change mouth
-  // setup blink
   // text output of sleep amount
 
   return (

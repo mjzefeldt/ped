@@ -26,7 +26,7 @@ export class ActivityContainer extends Component {
     // {
     //   sleep: [],
     //   goal: {},
-    //   currentDate: null
+    //   currentDate: null,
     // }
     this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(
       this
@@ -43,6 +43,35 @@ export class ActivityContainer extends Component {
     //   goal: this.props.goal,
     //   currentDate: 4
     // })
+    setInterval(() => {
+      let {topLid, bottomLid} = utils.opacityGetter(
+        this.state.currentDate,
+        this.state.sleep[this.state.currentDate].minutesAsleep,
+        this.state.goal.minDuration
+      )
+      document
+        .getElementById('left_bottom_lid')
+        .setAttribute('style', 'opacity: 100')
+      document
+        .getElementById('left_top_lid')
+        .setAttribute('style', 'opacity: 100')
+      document
+        .getElementById('right_bottom_lid')
+        .setAttribute('style', 'opacity: 100')
+      document
+        .getElementById('right_top_lid')
+        .setAttribute('style', 'opacity: 100')
+      setTimeout(function() {
+        document
+          .getElementById('left_bottom_lid')
+          .setAttribute('style', bottomLid)
+        document.getElementById('left_top_lid').setAttribute('style', topLid)
+        document
+          .getElementById('right_bottom_lid')
+          .setAttribute('style', bottomLid)
+        document.getElementById('right_top_lid').setAttribute('style', topLid)
+      }, 1000)
+    }, 5000)
   }
 
   handleSlideChange(evt) {
@@ -67,6 +96,12 @@ export class ActivityContainer extends Component {
 
   handleClick() {
     console.log('in mouseover')
+    // get class state of opacity so know what to go back to (for sad)
+    const {topLid, bottomLid} = utils.opacityGetter(
+      this.state.currentDate,
+      this.state.sleep[this.state.currentDate].minutesAsleep,
+      this.state.goal.minDuration
+    )
     document
       .getElementById('left_bottom_lid')
       .setAttribute('style', 'opacity: 100')
@@ -79,6 +114,16 @@ export class ActivityContainer extends Component {
     document
       .getElementById('right_top_lid')
       .setAttribute('style', 'opacity: 100')
+    setTimeout(function() {
+      document
+        .getElementById('left_bottom_lid')
+        .setAttribute('style', bottomLid)
+      document.getElementById('left_top_lid').setAttribute('style', topLid)
+      document
+        .getElementById('right_bottom_lid')
+        .setAttribute('style', bottomLid)
+      document.getElementById('right_top_lid').setAttribute('style', topLid)
+    }, 1000)
   }
 
   render() {
@@ -98,8 +143,9 @@ export class ActivityContainer extends Component {
         <div>
           {this.state.goal.hasOwnProperty('minDuration') ? (
             <Fragment>
+              {/* <button onClick={this.handleClick}>  */}
               <MyPed bodyColors={bodyColors} lidOpacity={lidOpacity} />
-              <button type="button" onClick={this.handleClick} />
+              {/* </button> */}
               <div className="slider-layout">
                 <div>
                   <div className="slider">
