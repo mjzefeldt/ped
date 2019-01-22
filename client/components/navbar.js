@@ -10,10 +10,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   </div>
 )
 
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.fitbit.fitInfo.user
-  }
-}
+// const mapState = state => {
+//   return {
+//     isLoggedIn: !!state.fitbit.fitInfo.user
+//   }
+// }
 
-export default connect(mapState)(Navbar)
+// export default connect(mapState)(Navbar)
+export default Navbar

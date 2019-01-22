@@ -32,6 +32,7 @@ export class ActivityContainer extends Component {
       this
     )
     this.handleSlideChange = this.handleSlideChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -64,22 +65,41 @@ export class ActivityContainer extends Component {
     }
   }
 
+  handleClick() {
+    console.log('in mouseover')
+    document
+      .getElementById('left_bottom_lid')
+      .setAttribute('style', 'opacity: 100')
+    document
+      .getElementById('left_top_lid')
+      .setAttribute('style', 'opacity: 100')
+    document
+      .getElementById('right_bottom_lid')
+      .setAttribute('style', 'opacity: 100')
+    document
+      .getElementById('right_top_lid')
+      .setAttribute('style', 'opacity: 100')
+  }
+
   render() {
     let sleepGoal
     let currentSleepAmount
     let bodyColors
+    let lidOpacity
     if (this.state.sleep.length) {
       sleepGoal = this.state.goal.minDuration / 2
       currentSleepAmount = this.state.sleep[this.state.currentDate]
         .minutesAsleep
       bodyColors = utils.sleepColorSetter(sleepGoal, currentSleepAmount)
+      lidOpacity = utils.opacitySetter(sleepGoal, currentSleepAmount)
     }
     return (
       <Fragment>
         <div>
           {this.state.goal.hasOwnProperty('minDuration') ? (
             <Fragment>
-              <MyPed bodyColors={bodyColors} />
+              <MyPed bodyColors={bodyColors} lidOpacity={lidOpacity} />
+              <button type="button" onClick={this.handleClick} />
               <div className="slider-layout">
                 <div>
                   <div className="slider">

@@ -24,6 +24,8 @@ form div {
   display: inline-block;
 }
 
+/* centering utilities */
+
 .center {
   margin: auto;
   width: 100%;
@@ -60,6 +62,60 @@ form div {
   font-size: 1em;
   margin-left: 1.5em;
   margin-right: 1.5em;
+}
+
+/* Ped SVG Styles */
+.sad {
+  fill: #428e92;
+}
+
+.sad-dark {
+  fill: #00363a;
+}
+
+.neutral {
+  fill: #cddc39;
+}
+
+.neutral-dark {
+  fill: #9a0;
+}
+
+.happy {
+  fill: #ffff4d;
+}
+
+.happy-dark {
+  fill: #ffd54d;
+}
+
+/* .top-lid-happy {
+  opacity: 0%;
+}
+
+.bottom-lid-happy {
+  opacity: 0%;
+}
+
+.top-lid-neutral {
+  opacity: 100%;
+  margin-top: -10px;
+}
+
+.bottom-lid-neutral {
+  opacity: 0%;
+}
+
+.top-lid-sad {
+  opacity: 0%;
+}
+
+.bottom-lid-sad {
+  opacity: 100%;
+} */
+
+.blink {
+  opacity: 100%;
 }
 
 .cls-1 {
