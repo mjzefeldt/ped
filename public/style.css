@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 a {
@@ -10,9 +10,17 @@ label {
   display: block;
 }
 
+#nav {
+  padding-left: 1em;
+}
+
 nav a {
   display: inline-block;
   margin: 1em;
+}
+
+#nav hr {
+  color: #002124;
 }
 
 form div {
@@ -20,24 +28,104 @@ form div {
   display: inline-block;
 }
 
+/* centering utilities */
+
 .center {
   margin: auto;
   width: 100%;
-  border: 3px solid green;
+  /* border: 3px solid green; use to help identify boxing */
   padding: 10px;
   text-align: center;
 }
 
 .center h2 {
   margin: auto;
+  padding: 20px;
+}
+
+/* slider styles */
+
+.slider-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+  padding-left: 2em;
+}
+
+#day {
+  width: 35em;
+}
+
+#slider-label {
+  font-size: 1.5em;
+}
+
+.tick {
+  font-size: 1em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+
+/* goal and sleep minutes */
+
+.center #goal {
+  position: absolute;
+  left: 75%;
+  padding: 100;
+  border-style: solid;
+  border-width: 0.05em;
+  padding: 1em;
+  border-radius: 100px;
+  border-color: #428e92;
+}
+
+.center #currentSleep {
+  margin: 2em;
+  padding: 100;
+  border-style: solid;
+  border-width: 0.05em;
+  padding: 1em;
+  border-radius: 100px;
+  border-color: #428e92;
+}
+
+/* Ped SVG Styles */
+.sad {
+  fill: #428e92;
+}
+
+.sad-dark {
+  fill: #002124;
+}
+
+.neutral {
+  fill: #cddc39;
+}
+
+.neutral-dark {
+  fill: #9a0;
+}
+
+.happy {
+  fill: #ffff4d;
+}
+
+.happy-dark {
+  fill: #ffd54d;
+}
+
+.blink {
+  opacity: 100%;
 }
 
 .cls-1 {
-  /* fill: #9a0; */
+  /* fill: #9a0; leave in for troubleshooting svg styles*/
 }
 
 .cls-2 {
-  /* fill: #cddc39; */
+  /* fill: #cddc39; leave in for troubleshooting svg styles*/
 }
 
 .cls-3 {
@@ -59,60 +147,3 @@ form div {
   stroke-miterlimit: 10;
   stroke-width: 3px;
 }
-
-/* .body-top {
-  fill: #cddc39;
-}
-
-.body-shadow {
-  fill: #9a0;;
-} */
-
-/* 
-.body-top-sad {
-  fill: #428e92;
-} */
-/* 
-.body-shadow-sad {
-  fill: #00363a;
-}
-
-.body-top-neutral {
-  fill: #cddc39;
-}
-
-.body-shadow-neutral {
-  fill: #9a0;
-} */
-
-/* .body-top-happy {
-  fill: #ffff4d;
-}
-
-.body-shadow-happy {
-  fill: #ffd54d;
-}
-
-.hair-front-sad {
-  fill: #428e92;
-}
-
-.hair-back-sad {
-  fill: #00363a;
-}
-
-.hair-front-neutral {
-  fill: #cddc39;
-}
-
-.hair-back-neutral {
-  fill: #9a0;
-}
-
-.hair-front-happy {
-  fill: #ffff4d;
-}
-
-.hair-back-happy {
-  fill: #ffd54d;
-} */

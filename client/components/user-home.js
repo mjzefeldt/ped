@@ -3,14 +3,23 @@ import {connect} from 'react-redux'
 import ActivityContainer from './activity-container'
 
 export class UserHome extends Component {
-  render() {
+  componentDidMount() {
+    localStorage.setItem('sleep', this.props.sleep)
+    localStorage.setItem('goal', this.props.goal)
+  }
+
+  render(props) {
+    console.log(this.props.goal.minDuration, '<<<home goal')
     return (
       <Fragment>
         <div>
           <header className="center">
-            <h3>Your Ped</h3>
+            <h2>Your Ped</h2>
           </header>
           <main className="center">
+            <div>
+              <div id="goal">Sleep Goal: 7 hr 45 min</div>
+            </div>
             <ActivityContainer
               sleep={this.props.sleep}
               goal={this.props.goal}

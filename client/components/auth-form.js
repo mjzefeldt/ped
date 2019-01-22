@@ -4,14 +4,17 @@ import secrets from '../../secrets'
 class AuthForm extends Component {
   render() {
     return (
-      <div>
-        <h2>Loginto Fitbit to get started with Ped</h2>
-
-        <a
-          href={`https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${secrets.id()}&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fwakeup&scope=activity%20profile%20sleep&expires_in=604800`}
-        >
-          Log in to Fitbit
-        </a>
+      <div className="center">
+        <div>
+          <h2>Loginto Fitbit to get started with Ped</h2>
+        </div>
+        <div>
+          <a
+            href={`https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${secrets.id()}&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fwakeup&scope=activity%20profile%20sleep&expires_in=604800`}
+          >
+            Log in to Fitbit
+          </a>
+        </div>
       </div>
     )
   }

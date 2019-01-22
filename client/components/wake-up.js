@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {
   fetchFitInfo,
-  // fetchActivitySteps,
+  // fetchActivitySteps, not doing for presentation
   fetchSleepLog,
   fetchSleepGoal
 } from '../store'
@@ -13,6 +13,7 @@ class WakeUp extends Component {
     super()
     this.clickHandler = this.clickHandler.bind(this)
   }
+
   componentDidMount() {
     const url = window.location.href
     const user = url
@@ -35,19 +36,22 @@ class WakeUp extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Great! Let's get your data</h2>
-        <button onClick={this.clickHandler} type="button">
-          Get Data
-        </button>
-        {this.props.sleep.length &&
-          this.props.goal && (
+        <div className="center">
+          <h2>Great! Let's get your data</h2>
+          <button onClick={this.clickHandler} type="button">
+            Get Data
+          </button>
+          {this.props.sleep.length && this.props.goal ? (
             <Fragment>
               <h3>Now let's wake up your Ped!</h3>
               <button type="button">
                 <Link to="/home">Wake Ped</Link>
               </button>
             </Fragment>
+          ) : (
+            ''
           )}
+        </div>
       </Fragment>
     )
   }
@@ -65,7 +69,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => ({
   fetchFitInfo: fitInfo => dispatch(fetchFitInfo(fitInfo)),
-  // fetchActivitySteps: userInfo => dispatch(fetchActivitySteps(userInfo)),
+  // fetchActivitySteps: userInfo => dispatch(fetchActivitySteps(userInfo)), not doing for presentation
   fetchSleepLog: userInfo => dispatch(fetchSleepLog(userInfo)),
   fetchSleepGoal: userInfo => dispatch(fetchSleepGoal(userInfo))
 })
