@@ -5,7 +5,7 @@ import ActivityContainer from './activity-container'
 export class UserHome extends Component {
   componentDidMount() {
     localStorage.setItem('sleep', this.props.sleep)
-    localStorage.setItem('goal', this.props.goal)
+    localStorage.setItem('goal', this.props)
   }
 
   render(props) {
