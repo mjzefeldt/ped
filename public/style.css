@@ -19,6 +19,10 @@ nav a {
   margin: 1em;
 }
 
+#nav hr {
+  color: #002124;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
@@ -36,6 +40,7 @@ form div {
 
 .center h2 {
   margin: auto;
+  padding: 20px;
 }
 
 /* slider styles */
@@ -92,7 +97,7 @@ form div {
 }
 
 .sad-dark {
-  fill: #00363a;
+  fill: #002124;
 }
 
 .neutral {

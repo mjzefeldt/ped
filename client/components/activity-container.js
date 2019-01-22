@@ -2,32 +2,32 @@ import React, {Component, Fragment} from 'react'
 import MyPed from './my-ped'
 import utils from '../../helper'
 
-const defaultState = {
-  sleep: [
-    {dateOfSleep: '2019-01-14', minutesAsleep: 0},
-    {dateOfSleep: '2019-01-15', minutesAsleep: 0},
-    {dateOfSleep: '2019-01-16', minutesAsleep: 0},
-    {dateOfSleep: '2019-01-17', minutesAsleep: 301},
-    {dateOfSleep: '2019-01-18', minutesAsleep: 244},
-    {dateOfSleep: '2019-01-19', minutesAsleep: 634},
-    {dateOfSleep: '2019-01-20', minutesAsleep: 208}
-  ],
-  goal: {
-    minDuration: 465
-  },
-  currentDate: 4 // num that will correspond with sleep index (latest day = sleep.length - 1)
-}
+// keep for troubleshooting for presentation
+// const defaultState = {
+//   sleep: [
+//     {dateOfSleep: '2019-01-14', minutesAsleep: 0},
+//     {dateOfSleep: '2019-01-15', minutesAsleep: 0},
+//     {dateOfSleep: '2019-01-16', minutesAsleep: 0},
+//     {dateOfSleep: '2019-01-17', minutesAsleep: 301},
+//     {dateOfSleep: '2019-01-18', minutesAsleep: 244},
+//     {dateOfSleep: '2019-01-19', minutesAsleep: 634},
+//     {dateOfSleep: '2019-01-20', minutesAsleep: 208}
+//   ],
+//   goal: {
+//     minDuration: 465
+//   },
+//   currentDate: 4
+//   // num that will correspond with sleep index (latest day = sleep.length - 1)
+// }
 
 export class ActivityContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = defaultState
-    // FINISH STYLING
-    // {
-    //   sleep: [],
-    //   goal: {},
-    //   currentDate: null,
-    // }
+    this.state = {
+      sleep: [],
+      goal: {},
+      currentDate: null
+    }
     this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(
       this
     )
@@ -37,42 +37,41 @@ export class ActivityContainer extends Component {
   componentDidMount() {
     this.hydrateStateWithLocalStorage()
 
-    // FINISH STYLING
-    // this.setState({
-    //   sleep: this.props.sleep.reverse(),
-    //   goal: this.props.goal,
-    //   currentDate: 4
-    // })
+    this.setState({
+      sleep: this.props.sleep.reverse(),
+      goal: this.props.goal,
+      currentDate: 4
+    })
 
-    // setInterval(() => {
-    //   let {topLid, bottomLid} = utils.opacityGetter(
-    //     this.state.currentDate,
-    //     this.state.sleep[this.state.currentDate].minutesAsleep,
-    //     this.state.goal.minDuration
-    //   )
-    //   document
-    //     .getElementById('left_bottom_lid')
-    //     .setAttribute('style', 'opacity: 100')
-    //   document
-    //     .getElementById('left_top_lid')
-    //     .setAttribute('style', 'opacity: 100')
-    //   document
-    //     .getElementById('right_bottom_lid')
-    //     .setAttribute('style', 'opacity: 100')
-    //   document
-    //     .getElementById('right_top_lid')
-    //     .setAttribute('style', 'opacity: 100')
-    //   setTimeout(function() {
-    //     document
-    //       .getElementById('left_bottom_lid')
-    //       .setAttribute('style', bottomLid)
-    //     document.getElementById('left_top_lid').setAttribute('style', topLid)
-    //     document
-    //       .getElementById('right_bottom_lid')
-    //       .setAttribute('style', bottomLid)
-    //     document.getElementById('right_top_lid').setAttribute('style', topLid)
-    //   }, 1000)
-    // }, 5000)
+    setInterval(() => {
+      let {topLid, bottomLid} = utils.opacityGetter(
+        this.state.currentDate,
+        this.state.sleep[this.state.currentDate].minutesAsleep,
+        this.state.goal.minDuration
+      )
+      document
+        .getElementById('left_bottom_lid')
+        .setAttribute('style', 'opacity: 100')
+      document
+        .getElementById('left_top_lid')
+        .setAttribute('style', 'opacity: 100')
+      document
+        .getElementById('right_bottom_lid')
+        .setAttribute('style', 'opacity: 100')
+      document
+        .getElementById('right_top_lid')
+        .setAttribute('style', 'opacity: 100')
+      setTimeout(function() {
+        document
+          .getElementById('left_bottom_lid')
+          .setAttribute('style', bottomLid)
+        document.getElementById('left_top_lid').setAttribute('style', topLid)
+        document
+          .getElementById('right_bottom_lid')
+          .setAttribute('style', bottomLid)
+        document.getElementById('right_top_lid').setAttribute('style', topLid)
+      }, 1000)
+    }, 5000)
   }
 
   handleSlideChange(evt) {
@@ -83,14 +82,16 @@ export class ActivityContainer extends Component {
   }
 
   hydrateStateWithLocalStorage() {
-    const key = 'currentDate'
-    if (localStorage.hasOwnProperty(key)) {
-      const value = parseInt(localStorage.getItem(key), 10)
-      try {
-        this.setState({[key]: value})
-      } catch (e) {
-        console.error(e)
-        this.setState({[key]: 4}) // default value to current day until calculate dynamically
+    for (let key in this.state) {
+      if (localStorage.hasOwnProperty(key)) {
+        let value = localStorage.getItem(key)
+        try {
+          value = JSON.parse(value)
+          this.setState({[key]: value})
+        } catch (e) {
+          // handle empty string
+          this.setState({[key]: value})
+        }
       }
     }
   }

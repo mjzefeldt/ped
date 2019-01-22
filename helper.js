@@ -126,9 +126,9 @@ utils.opacityGetter = (day, sleepMin, goal) => {
 }
 
 utils.minToHrMin = minutes => {
-  const hr = minutes / 60
+  const hr = Math.floor(minutes / 60)
   const remainder = minutes % 60
-  return `${Math.floor(hr)} hr ${remainder * 60} min`
+  return `${hr} hr ${remainder} min`
 }
 
 module.exports = utils

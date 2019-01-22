@@ -14,27 +14,20 @@ class Routes extends Component {
         <Route exact path="/wakeup" component={WakeUp} />
 
         {/* Routes placed here are available after fitbit user authentication */}
-        {/* {isLoggedIn && */}
-        <Route exact path="/home" component={UserHome} />
-        {/* } */}
+        {isLoggedIn && <Route exact path="/home" component={UserHome} />}
       </Switch>
     )
   }
 }
 
-// FINISH STYLING
-// const mapState = state => {
-//   return {
-//     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
-//     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-
-//     isLoggedIn: !!state.fitbit.fitInfo.user
-//   }
-// }
+const mapState = state => {
+  return {
+    // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
+    isLoggedIn: !!state.fitbit.fitInfo.user
+  }
+}
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
 
-// FINISH STYLING
-// export default withRouter(connect(mapState)(Routes))
-export default withRouter(Routes)
+export default withRouter(connect(mapState)(Routes))
