@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
 import MyPed from './my-ped'
 import utils from '../../helper'
 
@@ -22,11 +21,13 @@ const defaultState = {
 export class ActivityContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = this.state = {
-      sleep: [],
-      goal: {},
-      currentDate: null
-    }
+    this.state = defaultState
+    // FINISH STYLING
+    // {
+    //   sleep: [],
+    //   goal: {},
+    //   currentDate: null
+    // }
     this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(
       this
     )
@@ -35,11 +36,12 @@ export class ActivityContainer extends Component {
 
   componentDidMount() {
     this.hydrateStateWithLocalStorage()
-    this.setState({
-      sleep: this.props.sleep.reverse(),
-      goal: this.props.goal,
-      currentDate: 4
-    })
+    // FINISH STYLING
+    // this.setState({
+    //   sleep: this.props.sleep.reverse(),
+    //   goal: this.props.goal,
+    //   currentDate: 4
+    // })
   }
 
   handleSlideChange(evt) {
@@ -78,28 +80,57 @@ export class ActivityContainer extends Component {
           {this.state.goal.hasOwnProperty('minDuration') ? (
             <Fragment>
               <MyPed bodyColors={bodyColors} />
-              <div>
-                <input
-                  type="range"
-                  id="date"
-                  name="date"
-                  min="0"
-                  max="4"
-                  step="1"
-                  list="tickMarks"
-                  defaultValue={this.state.currentDate}
-                  onChange={evt => this.handleSlideChange(evt, this.value)}
-                />
-                <datalist id="tickMarks">
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                  <option value="4" />
-                  {/* <option value="5" />
-                  <option value="6" /> */}
-                </datalist>
-                <label htmlFor="date">Date</label>
+              <div className="slider-layout">
+                <div>
+                  <div className="slider">
+                    <div id="ticks">
+                      <span className="tick">
+                        {this.state.sleep[
+                          this.state.sleep.length - 5
+                        ].dateOfSleep.slice(5)}
+                      </span>
+                      <span className="tick">
+                        {this.state.sleep[
+                          this.state.sleep.length - 4
+                        ].dateOfSleep.slice(5)}
+                      </span>
+                      <span className="tick">
+                        {this.state.sleep[
+                          this.state.sleep.length - 3
+                        ].dateOfSleep.slice(5)}
+                      </span>
+                      <span className="tick">
+                        {this.state.sleep[
+                          this.state.sleep.length - 2
+                        ].dateOfSleep.slice(5)}
+                      </span>
+                      <span className="tick">today</span>
+                    </div>
+                    <input
+                      type="range"
+                      id="day"
+                      name="date"
+                      min="0"
+                      max="4"
+                      step="1"
+                      list="tickMarks"
+                      defaultValue={this.state.currentDate}
+                      onChange={evt => this.handleSlideChange(evt, this.value)}
+                    />
+                    <datalist id="tickMarks">
+                      <option value="0" />
+                      <option value="1" />
+                      <option value="2" />
+                      <option value="3" />
+                      <option value="4" />
+                      {/* <option value="5" />
+                      <option value="6" /> */}
+                    </datalist>
+                  </div>
+                </div>
+                <div id="slider-label">
+                  <label htmlFor="date">Daily Sleep Input</label>
+                </div>
               </div>
             </Fragment>
           ) : (

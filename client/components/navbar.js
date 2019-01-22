@@ -4,12 +4,8 @@ import {Link} from 'react-router-dom'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>Ped - Virtual Fitness Pet</h1>
-    <nav>
-      {/* temporary disable while work on loading */}
-      {/* Links here available only after fitbit authentication */}
-      {/* {isLoggedIn && <Link to="/home">Home</Link>} */}
-    </nav>
+    <h1 id="nav">Ped - Virtual Wellness Pet</h1>
+    <nav>{/* {isLoggedIn && <Link to="/home">Home</Link>} */}</nav>
     <hr />
   </div>
 )
@@ -21,4 +17,3 @@ const mapState = state => {
 }
 
 export default connect(mapState)(Navbar)
-// export default Navbar

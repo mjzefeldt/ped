@@ -8,7 +8,7 @@ export class UserHome extends Component {
       <Fragment>
         <div>
           <header className="center">
-            <h3>Your Ped</h3>
+            <h2>Your Ped</h2>
           </header>
           <main className="center">
             <ActivityContainer

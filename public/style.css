@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 a {
@@ -8,6 +8,10 @@ a {
 
 label {
   display: block;
+}
+
+#nav {
+  padding-left: 1em;
 }
 
 nav a {
@@ -23,13 +27,39 @@ form div {
 .center {
   margin: auto;
   width: 100%;
-  border: 3px solid green;
+  /* border: 3px solid green; */
   padding: 10px;
   text-align: center;
 }
 
 .center h2 {
   margin: auto;
+}
+
+/* slider styles */
+
+.slider-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+  padding-left: 2em;
+}
+
+#day {
+  width: 35em;
+}
+
+#slider-label {
+  /* padding-left: 0.5em; */
+  font-size: 1.5em;
+}
+
+.tick {
+  font-size: 1em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
 }
 
 .cls-1 {
