@@ -79,15 +79,30 @@ utils.sleepColorSetter = (goal, currentAmount) => {
 const opacityLidKey = {
   sad: {
     topLid: 'opacity: 0',
-    bottomLid: 'opacity: 100'
+    bottomLid: 'opacity: 100',
+    mouth: {
+      mouthSad: 'opacity: 100',
+      mouthNeutral: 'opacity: 0',
+      mouthHappy: 'opacity: 0'
+    }
   },
   neutral: {
     topLid: 'opacity: 0',
-    bottomLid: 'opacity: 0'
+    bottomLid: 'opacity: 0',
+    mouth: {
+      mouthSad: 'opacity: 0',
+      mouthNeutral: 'opacity: 100',
+      mouthHappy: 'opacity: 0'
+    }
   },
   happy: {
     topLid: 'opacity: 0',
-    bottomLid: 'opacity: 0'
+    bottomLid: 'opacity: 0',
+    mouth: {
+      mouthSad: 'opacity: 0',
+      mouthNeutral: 'opacity: 0',
+      mouthHappy: 'opacity:100'
+    }
   }
 }
 
@@ -98,16 +113,22 @@ utils.opacitySetter = (goal, currentAmount) => {
     // class for ped will be sad and sickly
     mood = 'neutral' // class for ped will be neutral - eh
   else mood = 'happy' // class for ped will be health and happy
-
   return {
     topLid: opacityLidKey[mood].topLid,
-    bottomLid: opacityLidKey[mood].bottomLid
+    bottomLid: opacityLidKey[mood].bottomLid,
+    mouth: opacityLidKey[mood].mouth
   }
 }
 
 utils.opacityGetter = (day, sleepMin, goal) => {
   const sleepGoal = goal / 2
   return utils.opacitySetter(sleepGoal, sleepMin)
+}
+
+utils.minToHrMin = minutes => {
+  const hr = minutes / 60
+  const remainder = minutes % 60
+  return `${Math.floor(hr)} hr ${remainder * 60} min`
 }
 
 module.exports = utils

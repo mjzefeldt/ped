@@ -1,9 +1,6 @@
 import React from 'react'
 
 const Ped = props => {
-  // change mouth
-  // text output of sleep amount
-
   return (
     <svg
       id="ped"

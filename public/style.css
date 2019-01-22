@@ -29,7 +29,7 @@ form div {
 .center {
   margin: auto;
   width: 100%;
-  /* border: 3px solid green; */
+  /* border: 3px solid green; use to help identify boxing */
   padding: 10px;
   text-align: center;
 }
@@ -54,7 +54,6 @@ form div {
 }
 
 #slider-label {
-  /* padding-left: 0.5em; */
   font-size: 1.5em;
 }
 
@@ -62,6 +61,29 @@ form div {
   font-size: 1em;
   margin-left: 1.5em;
   margin-right: 1.5em;
+}
+
+/* goal and sleep minutes */
+
+.center #goal {
+  position: absolute;
+  left: 75%;
+  padding: 100;
+  border-style: solid;
+  border-width: 0.05em;
+  padding: 1em;
+  border-radius: 100px;
+  border-color: #428e92;
+}
+
+.center #currentSleep {
+  margin: 2em;
+  padding: 100;
+  border-style: solid;
+  border-width: 0.05em;
+  padding: 1em;
+  border-radius: 100px;
+  border-color: #428e92;
 }
 
 /* Ped SVG Styles */
@@ -89,41 +111,16 @@ form div {
   fill: #ffd54d;
 }
 
-/* .top-lid-happy {
-  opacity: 0%;
-}
-
-.bottom-lid-happy {
-  opacity: 0%;
-}
-
-.top-lid-neutral {
-  opacity: 100%;
-  margin-top: -10px;
-}
-
-.bottom-lid-neutral {
-  opacity: 0%;
-}
-
-.top-lid-sad {
-  opacity: 0%;
-}
-
-.bottom-lid-sad {
-  opacity: 100%;
-} */
-
 .blink {
   opacity: 100%;
 }
 
 .cls-1 {
-  /* fill: #9a0; */
+  /* fill: #9a0; leave in for troubleshooting svg styles*/
 }
 
 .cls-2 {
-  /* fill: #cddc39; */
+  /* fill: #cddc39; leave in for troubleshooting svg styles*/
 }
 
 .cls-3 {
@@ -145,60 +142,3 @@ form div {
   stroke-miterlimit: 10;
   stroke-width: 3px;
 }
-
-/* .body-top {
-  fill: #cddc39;
-}
-
-.body-shadow {
-  fill: #9a0;;
-} */
-
-/* 
-.body-top-sad {
-  fill: #428e92;
-} */
-/* 
-.body-shadow-sad {
-  fill: #00363a;
-}
-
-.body-top-neutral {
-  fill: #cddc39;
-}
-
-.body-shadow-neutral {
-  fill: #9a0;
-} */
-
-/* .body-top-happy {
-  fill: #ffff4d;
-}
-
-.body-shadow-happy {
-  fill: #ffd54d;
-}
-
-.hair-front-sad {
-  fill: #428e92;
-}
-
-.hair-back-sad {
-  fill: #00363a;
-}
-
-.hair-front-neutral {
-  fill: #cddc39;
-}
-
-.hair-back-neutral {
-  fill: #9a0;
-}
-
-.hair-front-happy {
-  fill: #ffff4d;
-}
-
-.hair-back-happy {
-  fill: #ffd54d;
-} */

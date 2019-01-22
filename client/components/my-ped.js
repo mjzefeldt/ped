@@ -12,31 +12,24 @@ export class MyPed extends Component {
       lid,
       lidHL
     } = this.props.bodyColors
-    const {topLid, bottomLid} = this.props.lidOpacity
-    const bodyShadowObj = document
-      .getElementById('body-shadow')
-      .setAttribute('fill', bodyShadow)
-    const bodyTopObj = document
-      .getElementById('body-top')
-      .setAttribute('fill', bodyTop)
-    const hairBackObj = document
-      .getElementById('hairBack')
-      .setAttribute('fill', hairBack)
-    const hairFrontObj = document
-      .getElementById('hairFront')
-      .setAttribute('fill', hairFront)
-    const btmLftLidObj = document
-      .getElementById('top_left_bottom_lid')
-      .setAttribute('class', lid)
-    const topLftLidObj = document
-      .getElementById('top_top_lid-2')
-      .setAttribute('class', lid)
-    const btmRtLidObj = document
-      .getElementById('top_bottom_lid-3')
-      .setAttribute('class', lid)
-    const topRtLidObj = document
-      .getElementById('top_top_lid-3')
-      .setAttribute('class', lid)
+    const {topLid, bottomLid, mouth} = this.props.lidOpacity
+
+    document.getElementById('mouth_sad').setAttribute('style', mouth.mouthSad)
+    document
+      .getElementById('mouth_neutral')
+      .setAttribute('style', mouth.mouthNeutral)
+    document
+      .getElementById('mouth_happy')
+      .setAttribute('style', mouth.mouthHappy)
+
+    document.getElementById('body-shadow').setAttribute('fill', bodyShadow)
+    document.getElementById('body-top').setAttribute('fill', bodyTop)
+    document.getElementById('hairBack').setAttribute('fill', hairBack)
+    document.getElementById('hairFront').setAttribute('fill', hairFront)
+    document.getElementById('top_left_bottom_lid').setAttribute('class', lid)
+    document.getElementById('top_top_lid-2').setAttribute('class', lid)
+    document.getElementById('top_bottom_lid-3').setAttribute('class', lid)
+    document.getElementById('top_top_lid-3').setAttribute('class', lid)
     document.getElementById('bottom_bottom_lid').setAttribute('class', lidHL)
     document.getElementById('top_bottom_lid').setAttribute('class', lidHL)
     document.getElementById('bottom_top_lid').setAttribute('class', lidHL)
@@ -60,31 +53,24 @@ export class MyPed extends Component {
       lid,
       lidHL
     } = this.props.bodyColors
-    const {topLid, bottomLid} = this.props.lidOpacity
-    const bodyShadowObj = document
-      .getElementById('body-shadow')
-      .setAttribute('fill', bodyShadow)
-    const bodyTopObj = document
-      .getElementById('body-top')
-      .setAttribute('fill', bodyTop)
-    const hairBackObj = document
-      .getElementById('hairBack')
-      .setAttribute('fill', hairBack)
-    const hairFrontObj = document
-      .getElementById('hairFront')
-      .setAttribute('fill', hairFront)
-    const btmLftLidObj = document
-      .getElementById('top_left_bottom_lid')
-      .setAttribute('class', lid)
-    const topLftLidObj = document
-      .getElementById('top_top_lid-2')
-      .setAttribute('class', lid)
-    const btmRtLidObj = document
-      .getElementById('top_bottom_lid-3')
-      .setAttribute('class', lid)
-    const topRtLidObj = document
-      .getElementById('top_top_lid-3')
-      .setAttribute('class', lid)
+    const {topLid, bottomLid, mouth} = this.props.lidOpacity
+
+    document.getElementById('mouth_sad').setAttribute('style', mouth.mouthSad)
+    document
+      .getElementById('mouth_neutral')
+      .setAttribute('style', mouth.mouthNeutral)
+    document
+      .getElementById('mouth_happy')
+      .setAttribute('style', mouth.mouthHappy)
+
+    document.getElementById('body-shadow').setAttribute('fill', bodyShadow)
+    document.getElementById('body-top').setAttribute('fill', bodyTop)
+    document.getElementById('hairBack').setAttribute('fill', hairBack)
+    document.getElementById('hairFront').setAttribute('fill', hairFront)
+    document.getElementById('top_left_bottom_lid').setAttribute('class', lid)
+    document.getElementById('top_top_lid-2').setAttribute('class', lid)
+    document.getElementById('top_bottom_lid-3').setAttribute('class', lid)
+    document.getElementById('top_top_lid-3').setAttribute('class', lid)
     document.getElementById('bottom_bottom_lid').setAttribute('class', lidHL)
     document.getElementById('top_bottom_lid').setAttribute('class', lidHL)
     document.getElementById('bottom_top_lid').setAttribute('class', lidHL)

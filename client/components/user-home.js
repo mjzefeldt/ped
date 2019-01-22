@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import ActivityContainer from './activity-container'
 
 export class UserHome extends Component {
-  render() {
+  render(props) {
+    console.log(this.props.goal.minDuration, '<<<home goal')
     return (
       <Fragment>
         <div>
@@ -11,6 +12,9 @@ export class UserHome extends Component {
             <h2>Your Ped</h2>
           </header>
           <main className="center">
+            <div>
+              <div id="goal">Sleep Goal: 7 hr 45 min</div>
+            </div>
             <ActivityContainer
               sleep={this.props.sleep}
               goal={this.props.goal}
