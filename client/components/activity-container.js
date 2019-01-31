@@ -2,24 +2,6 @@ import React, {Component, Fragment} from 'react'
 import MyPed from './my-ped'
 import utils from '../../helper'
 
-// keep for troubleshooting for presentation
-// const defaultState = {
-//   sleep: [
-//     {dateOfSleep: '2019-01-14', minutesAsleep: 0},
-//     {dateOfSleep: '2019-01-15', minutesAsleep: 0},
-//     {dateOfSleep: '2019-01-16', minutesAsleep: 0},
-//     {dateOfSleep: '2019-01-17', minutesAsleep: 301},
-//     {dateOfSleep: '2019-01-18', minutesAsleep: 244},
-//     {dateOfSleep: '2019-01-19', minutesAsleep: 634},
-//     {dateOfSleep: '2019-01-20', minutesAsleep: 208}
-//   ],
-//   goal: {
-//     minDuration: 465
-//   },
-//   currentDate: 4
-//   // num that will correspond with sleep index (latest day = sleep.length - 1)
-// }
-
 export class ActivityContainer extends Component {
   constructor(props) {
     super(props)
@@ -38,9 +20,9 @@ export class ActivityContainer extends Component {
     this.hydrateStateWithLocalStorage()
 
     this.setState({
-      sleep: this.props.sleep.reverse(),
+      sleep: this.props.sleep.reverse(), //sleep comes in latest days first - reverse array structure
       goal: this.props.goal,
-      currentDate: 4
+      currentDate: 6
     })
 
     setInterval(() => {
@@ -102,7 +84,7 @@ export class ActivityContainer extends Component {
     let bodyColors
     let lidOpacity
     if (this.state.sleep.length) {
-      sleepGoal = this.state.goal.minDuration / 2
+      sleepGoal = this.state.goal.minDuration
       currentSleepAmount = this.state.sleep[this.state.currentDate]
         .minutesAsleep
       bodyColors = utils.sleepColorSetter(sleepGoal, currentSleepAmount)
@@ -118,6 +100,16 @@ export class ActivityContainer extends Component {
                 <div>
                   <div className="slider">
                     <div id="ticks">
+                      <span className="tick">
+                        {this.state.sleep[
+                          this.state.sleep.length - 7
+                        ].dateOfSleep.slice(5)}
+                      </span>
+                      <span className="tick">
+                        {this.state.sleep[
+                          this.state.sleep.length - 6
+                        ].dateOfSleep.slice(5)}
+                      </span>
                       <span className="tick">
                         {this.state.sleep[
                           this.state.sleep.length - 5
@@ -157,8 +149,8 @@ export class ActivityContainer extends Component {
                       <option value="2" />
                       <option value="3" />
                       <option value="4" />
-                      {/* <option value="5" />
-                      <option value="6" /> */}
+                      <option value="5" />
+                      <option value="6" />
                     </datalist>
                   </div>
                 </div>

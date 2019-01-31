@@ -60,11 +60,11 @@ const colorKey = {
 
 utils.sleepColorSetter = (goal, currentAmount) => {
   let mood
-  if (currentAmount < goal) mood = 'sad'
-  else if (currentAmount < goal + goal / 2)
+  if (currentAmount > goal) mood = 'happy'
+  else if (currentAmount > goal - 2)
     // class for ped will be sad and sickly
     mood = 'neutral' // class for ped will be neutral - eh
-  else mood = 'happy' // class for ped will be health and happy
+  else mood = 'sad' // class for ped will be health and happy
   return {
     bodyTop: colorKey[mood].top,
     bodyShadow: colorKey[mood].bottom,
@@ -108,11 +108,11 @@ const opacityLidKey = {
 
 utils.opacitySetter = (goal, currentAmount) => {
   let mood
-  if (currentAmount < goal) mood = 'sad'
-  else if (currentAmount < goal + goal / 2)
+  if (currentAmount > goal) mood = 'happy'
+  else if (currentAmount > goal - 2)
     // class for ped will be sad and sickly
     mood = 'neutral' // class for ped will be neutral - eh
-  else mood = 'happy' // class for ped will be health and happy
+  else mood = 'sad' // class for ped will be health and happy
   return {
     topLid: opacityLidKey[mood].topLid,
     bottomLid: opacityLidKey[mood].bottomLid,
@@ -121,7 +121,7 @@ utils.opacitySetter = (goal, currentAmount) => {
 }
 
 utils.opacityGetter = (day, sleepMin, goal) => {
-  const sleepGoal = goal / 2
+  const sleepGoal = goal
   return utils.opacitySetter(sleepGoal, sleepMin)
 }
 
