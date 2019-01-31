@@ -1,6 +1,12 @@
 import React, {Fragment, Component} from 'react'
 // import Ped from '!svg-react-loader!../../public/snapsvg_ped_003.svg'
+// import { TweenMax, TimelineLite, Power2, Elastic, CSSPlugin } from "gsap/TweenMax"
+import {TweenMax, Power2, TimelineLite} from 'gsap/umd/TweenMax'
+// import ScrollToPlugin from "gsap/umd/ScrollToPlugin";
+// import Draggable from "gsap/umd/Draggable";
 import Ped from './ped'
+
+const plugins = [TweenMax, Power2, TimelineLite]
 
 export class MyPed extends Component {
   componentDidMount() {
@@ -14,6 +20,17 @@ export class MyPed extends Component {
     } = this.props.bodyColors
     const {topLid, bottomLid, mouth} = this.props.lidOpacity
 
+    // setUpEyeTracking
+
+    // const pupils = Array.from(document.querySelectorAll('svg #ped'))
+    // pupils.forEach(element => {
+    //   element.addEventListener('mouseover', start )
+    //   element.addEventListener('mouseout', end )
+    // })
+
+    // const start = () => {}
+
+    // setUpMouthChanges
     document.getElementById('mouth_sad').setAttribute('style', mouth.mouthSad)
     document
       .getElementById('mouth_neutral')
@@ -22,6 +39,7 @@ export class MyPed extends Component {
       .getElementById('mouth_happy')
       .setAttribute('style', mouth.mouthHappy)
 
+    // setUpColorChanges
     document.getElementById('body-shadow').setAttribute('fill', bodyShadow)
     document.getElementById('body-top').setAttribute('fill', bodyTop)
     document.getElementById('hairBack').setAttribute('fill', hairBack)
@@ -55,6 +73,7 @@ export class MyPed extends Component {
     } = this.props.bodyColors
     const {topLid, bottomLid, mouth} = this.props.lidOpacity
 
+    // setUpMouthChanges
     document.getElementById('mouth_sad').setAttribute('style', mouth.mouthSad)
     document
       .getElementById('mouth_neutral')
@@ -63,6 +82,7 @@ export class MyPed extends Component {
       .getElementById('mouth_happy')
       .setAttribute('style', mouth.mouthHappy)
 
+    // setUpColorChanges
     document.getElementById('body-shadow').setAttribute('fill', bodyShadow)
     document.getElementById('body-top').setAttribute('fill', bodyTop)
     document.getElementById('hairBack').setAttribute('fill', hairBack)

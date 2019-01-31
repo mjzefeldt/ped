@@ -1,12 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {
-  fetchFitInfo,
-  // fetchActivitySteps, not doing for presentation
-  fetchSleepLog,
-  fetchSleepGoal
-} from '../store'
+import {fetchFitInfo, fetchSleepLog, fetchSleepGoal} from '../store'
 
 class WakeUp extends Component {
   constructor() {
@@ -69,7 +64,6 @@ const mapState = state => {
 
 const mapDispatch = dispatch => ({
   fetchFitInfo: fitInfo => dispatch(fetchFitInfo(fitInfo)),
-  // fetchActivitySteps: userInfo => dispatch(fetchActivitySteps(userInfo)), not doing for presentation
   fetchSleepLog: userInfo => dispatch(fetchSleepLog(userInfo)),
   fetchSleepGoal: userInfo => dispatch(fetchSleepGoal(userInfo))
 })
