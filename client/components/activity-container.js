@@ -38,10 +38,13 @@ export class ActivityContainer extends Component {
     this.hydrateStateWithLocalStorage()
 
     this.setState({
-      sleep: this.props.sleep.reverse(),
+      sleep: this.props.sleep.reverse(), // data from api comes in most recent first
       goal: this.props.goal,
-      currentDate: 4
+      currentDate: 6
     })
+
+    localStorage.setItem('sleep', this.props.sleep)
+    localStorage.setItem('goal', this.props)
 
     setInterval(() => {
       let {topLid, bottomLid} = utils.opacityGetter(
@@ -102,12 +105,21 @@ export class ActivityContainer extends Component {
     let bodyColors
     let lidOpacity
     if (this.state.sleep.length) {
-      sleepGoal = this.state.goal.minDuration / 2
+      sleepGoal = this.state.goal.minDuration / 10 // sleep goal increments
+      console.log(typeof sleepGoal, sleepGoal, '<<< sleepGoal')
+
       currentSleepAmount = this.state.sleep[this.state.currentDate]
         .minutesAsleep
+      console.log(
+        typeof currentSleepAmount,
+        currentSleepAmount,
+        '<<< sleepAmount'
+      )
       bodyColors = utils.sleepColorSetter(sleepGoal, currentSleepAmount)
       lidOpacity = utils.opacitySetter(sleepGoal, currentSleepAmount)
     }
+    console.log(bodyColors, '<<< bodyColors')
+    console.log(lidOpacity, '<<< lidOpacity')
     return (
       <Fragment>
         <div>
@@ -118,6 +130,16 @@ export class ActivityContainer extends Component {
                 <div>
                   <div className="slider">
                     <div id="ticks">
+                      <span className="tick">
+                        {this.state.sleep[
+                          this.state.sleep.length - 7
+                        ].dateOfSleep.slice(5)}
+                      </span>
+                      <span className="tick">
+                        {this.state.sleep[
+                          this.state.sleep.length - 6
+                        ].dateOfSleep.slice(5)}
+                      </span>
                       <span className="tick">
                         {this.state.sleep[
                           this.state.sleep.length - 5
@@ -145,7 +167,7 @@ export class ActivityContainer extends Component {
                       id="day"
                       name="date"
                       min="0"
-                      max="4"
+                      max="6"
                       step="1"
                       list="tickMarks"
                       defaultValue={this.state.currentDate}
@@ -157,8 +179,8 @@ export class ActivityContainer extends Component {
                       <option value="2" />
                       <option value="3" />
                       <option value="4" />
-                      {/* <option value="5" />
-                      <option value="6" /> */}
+                      <option value="5" />
+                      <option value="6" />
                     </datalist>
                   </div>
                 </div>
