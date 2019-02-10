@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import ActivityContainer from './activity-container'
+import Scale from './scale'
 
 export class UserHome extends Component {
   componentDidMount() {
@@ -8,8 +9,7 @@ export class UserHome extends Component {
     localStorage.setItem('goal', this.props)
   }
 
-  render(props) {
-    console.log(this.props.goal.minDuration, '<<<home goal')
+  render() {
     return (
       <Fragment>
         <div>
@@ -19,6 +19,9 @@ export class UserHome extends Component {
           <main className="center">
             <div>
               <div id="goal">Sleep Goal: 7 hr 45 min</div>
+            </div>
+            <div id="scale">
+              <Scale />
             </div>
             <ActivityContainer
               sleep={this.props.sleep}

@@ -20,10 +20,13 @@ export class ActivityContainer extends Component {
     this.hydrateStateWithLocalStorage()
 
     this.setState({
-      sleep: this.props.sleep.reverse(), //sleep comes in latest days first - reverse array structure
+      sleep: this.props.sleep.reverse(), // data from api comes in most recent first
       goal: this.props.goal,
       currentDate: 6
     })
+
+    localStorage.setItem('sleep', this.props.sleep)
+    localStorage.setItem('goal', this.props)
 
     setInterval(() => {
       let {topLid, bottomLid} = utils.opacityGetter(
@@ -84,12 +87,21 @@ export class ActivityContainer extends Component {
     let bodyColors
     let lidOpacity
     if (this.state.sleep.length) {
-      sleepGoal = this.state.goal.minDuration
+      sleepGoal = this.state.goal.minDuration / 10 // sleep goal increments
+      console.log(typeof sleepGoal, sleepGoal, '<<< sleepGoal')
+
       currentSleepAmount = this.state.sleep[this.state.currentDate]
         .minutesAsleep
+      console.log(
+        typeof currentSleepAmount,
+        currentSleepAmount,
+        '<<< sleepAmount'
+      )
       bodyColors = utils.sleepColorSetter(sleepGoal, currentSleepAmount)
       lidOpacity = utils.opacitySetter(sleepGoal, currentSleepAmount)
     }
+    console.log(bodyColors, '<<< bodyColors')
+    console.log(lidOpacity, '<<< lidOpacity')
     return (
       <Fragment>
         <div>
@@ -137,7 +149,7 @@ export class ActivityContainer extends Component {
                       id="day"
                       name="date"
                       min="0"
-                      max="4"
+                      max="6"
                       step="1"
                       list="tickMarks"
                       defaultValue={this.state.currentDate}
