@@ -2,24 +2,6 @@ import React, {Component, Fragment} from 'react'
 import MyPed from './my-ped'
 import utils from '../../helper'
 
-// keep for troubleshooting for presentation
-// const defaultState = {
-//   sleep: [
-//     {dateOfSleep: '2019-01-14', minutesAsleep: 0},
-//     {dateOfSleep: '2019-01-15', minutesAsleep: 0},
-//     {dateOfSleep: '2019-01-16', minutesAsleep: 0},
-//     {dateOfSleep: '2019-01-17', minutesAsleep: 301},
-//     {dateOfSleep: '2019-01-18', minutesAsleep: 244},
-//     {dateOfSleep: '2019-01-19', minutesAsleep: 634},
-//     {dateOfSleep: '2019-01-20', minutesAsleep: 208}
-//   ],
-//   goal: {
-//     minDuration: 465
-//   },
-//   currentDate: 4
-//   // num that will correspond with sleep index (latest day = sleep.length - 1)
-// }
-
 export class ActivityContainer extends Component {
   constructor(props) {
     super(props)

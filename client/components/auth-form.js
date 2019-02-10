@@ -12,7 +12,7 @@ class AuthForm extends Component {
           <a
             href={`https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${secrets.id()}&redirect_uri=https%3A%2F%2Fped-wellness-pet.herokuapp.com%2Fwakeup&scope=activity%20profile%20sleep&expires_in=604800`}
           >
-            Log in to Fitbit
+            Login to Fitbit Account
           </a>
         </div>
       </div>
