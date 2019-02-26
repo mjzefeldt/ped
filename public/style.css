@@ -70,7 +70,7 @@ form div {
 
 /* goal and sleep minutes */
 
-.center #goal {
+#goal {
   position: absolute;
   left: 75%;
   padding: 100;
@@ -81,7 +81,7 @@ form div {
   border-color: #428e92;
 }
 
-.center #scale {
+#scale {
   position: absolute;
   left: 10%;
   padding: 100;
@@ -92,7 +92,7 @@ form div {
   border-color: #428e92;
 }
 
-.center #currentSleep {
+#currentSleep {
   margin: 2em;
   padding: 100;
   border-style: solid;
@@ -172,15 +172,15 @@ form div {
   align-content: center;
 }
 
-#scale-wrapper #happy {
+#happy {
   background-color: #ffff4d;
 }
 
-#scale-wrapper #neutral {
+#neutral {
   background-color: #cddc39;
 }
 
-#scale-wrapper #sad {
+#sad {
   background-color: #428e92;
 }
 

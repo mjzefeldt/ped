@@ -22,7 +22,7 @@ export class ActivityContainer extends Component {
     this.setState({
       sleep: this.props.sleep.reverse(), // data from api comes in most recent first
       goal: this.props.goal,
-      currentDate: 6
+      currentDate: this.props.sleep.length - 1 // most recent date
     })
 
     localStorage.setItem('sleep', this.props.sleep)
@@ -88,27 +88,28 @@ export class ActivityContainer extends Component {
     let lidOpacity
     if (this.state.sleep.length) {
       sleepGoal = this.state.goal.minDuration / 10 // sleep goal increments
-      console.log(typeof sleepGoal, sleepGoal, '<<< sleepGoal')
 
       currentSleepAmount = this.state.sleep[this.state.currentDate]
         .minutesAsleep
-      console.log(
-        typeof currentSleepAmount,
-        currentSleepAmount,
-        '<<< sleepAmount'
-      )
+
       bodyColors = utils.sleepColorSetter(sleepGoal, currentSleepAmount)
       lidOpacity = utils.opacitySetter(sleepGoal, currentSleepAmount)
     }
-    console.log(bodyColors, '<<< bodyColors')
-    console.log(lidOpacity, '<<< lidOpacity')
+
     return (
       <Fragment>
         <div>
           {this.state.goal.hasOwnProperty('minDuration') ? (
             <Fragment>
               <MyPed bodyColors={bodyColors} lidOpacity={lidOpacity} />
-              <div className="slider-layout">
+
+              <div>
+                <button>Prev</button>
+                {this.state.sleep[this.state.currentDate].dateOfSleep.slice(5)}
+                <button>Next</button>
+              </div>
+
+              {/* <div className="slider-layout">
                 <div>
                   <div className="slider">
                     <div id="ticks">
@@ -169,7 +170,7 @@ export class ActivityContainer extends Component {
                 <div id="slider-label">
                   <label htmlFor="date">Daily Sleep Input</label>
                 </div>
-              </div>
+              </div> */}
               <div className="center">
                 <div id="currentSleep">
                   Total Daily Sleep: {utils.minToHrMin(currentSleepAmount)}
