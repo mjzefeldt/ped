@@ -18,10 +18,17 @@ export class UserHome extends Component {
             <div id="scale">
               <Scale />
             </div>
-            <ActivityContainer
-              sleep={this.props.sleep}
-              goal={this.props.goal}
-            />
+            {this.props.sleep.length ? (
+              <ActivityContainer
+                sleep={this.props.sleep}
+                goal={this.props.goal}
+              />
+            ) : (
+              <p>
+                Hmm...no sleep data logged for your fitbit. So Ped cannot exist.
+                Try again once log sleep data.
+              </p>
+            )}
           </main>
         </div>
       </Fragment>
