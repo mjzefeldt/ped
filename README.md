@@ -4,6 +4,9 @@ _Application Description_
 
 Ped is a personal wellness app proof of concept that uses Fitbit personal data to maintain the state of a virtual pet, a Ped. Personal Fitbit data is pulled into the app via an implicit OAuth 2.0 connection that access's Fitbit web API end routes for sleep and profile data. Sleep goal and daily sleep totals are modeled in a Redux store and then used to populate Ped's local state in React. State corresponds to the visual appearance of the virtual pet Ped. The closer a user's daily total is to her sleep goal the happier and healthier the appearance of the Ped. Ped graphic created via SVG authoring. Ped animation and state changes implemented via direct DOM manipulation of SVG attributes within React lifecycle methods.
 
+![Ped image - at least 60% of sleep goal](https://github.com/mjzefeldt/ped/blob/master/ped-image-01.png)
+![Ped image - less than 60% of sleep goal](https://github.com/mjzefeldt/ped/blob/master/ped-image-02.png)
+
 ## Try out Ped
 Visit https://ped-wellness-pet.herokuapp.com/ to try out Ped.
 NOTE - You must have a Fitbit account to try Ped out as this is a built as a personal use companion application to a user's Fitbit account.
