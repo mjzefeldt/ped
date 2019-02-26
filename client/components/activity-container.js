@@ -10,23 +10,16 @@ export class ActivityContainer extends Component {
       goal: {},
       currentDate: null
     }
-    this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(
-      this
-    )
-    this.handleSlideChange = this.handleSlideChange.bind(this)
+    this.prevBtnClick = this.prevBtnClick.bind(this)
+    this.nextBtnClick = this.nextBtnClick.bind(this)
   }
 
   componentDidMount() {
-    this.hydrateStateWithLocalStorage()
-
     this.setState({
       sleep: this.props.sleep.reverse(), // data from api comes in most recent first
       goal: this.props.goal,
-      currentDate: 6
+      currentDate: this.props.sleep.length - 1 // most recent date
     })
-
-    localStorage.setItem('sleep', this.props.sleep)
-    localStorage.setItem('goal', this.props)
 
     setInterval(() => {
       let {topLid, bottomLid} = utils.opacityGetter(
@@ -59,26 +52,16 @@ export class ActivityContainer extends Component {
     }, 5000)
   }
 
-  handleSlideChange(evt) {
-    evt.preventDefault()
-    const day = parseInt(evt.target.value, 10)
-    localStorage.setItem('currentDate', day)
-    this.setState({currentDate: day})
+  prevBtnClick() {
+    this.setState(prev => {
+      return {currentDate: prev.currentDate - 1}
+    })
   }
 
-  hydrateStateWithLocalStorage() {
-    for (let key in this.state) {
-      if (localStorage.hasOwnProperty(key)) {
-        let value = localStorage.getItem(key)
-        try {
-          value = JSON.parse(value)
-          this.setState({[key]: value})
-        } catch (e) {
-          // handle empty string
-          this.setState({[key]: value})
-        }
-      }
-    }
+  nextBtnClick() {
+    this.setState(prev => {
+      return {currentDate: prev.currentDate + 1}
+    })
   }
 
   render() {
@@ -86,100 +69,53 @@ export class ActivityContainer extends Component {
     let currentSleepAmount
     let bodyColors
     let lidOpacity
+    let date
     if (this.state.sleep.length) {
       sleepGoal = this.state.goal.minDuration / 10 // sleep goal increments
-      console.log(typeof sleepGoal, sleepGoal, '<<< sleepGoal')
-
       currentSleepAmount = this.state.sleep[this.state.currentDate]
         .minutesAsleep
-      console.log(
-        typeof currentSleepAmount,
-        currentSleepAmount,
-        '<<< sleepAmount'
-      )
       bodyColors = utils.sleepColorSetter(sleepGoal, currentSleepAmount)
       lidOpacity = utils.opacitySetter(sleepGoal, currentSleepAmount)
+      date =
+        this.state.sleep[this.state.currentDate].dateOfSleep.slice(5) +
+        `-` +
+        this.state.sleep[this.state.currentDate].dateOfSleep.slice(0, 4)
     }
-    console.log(bodyColors, '<<< bodyColors')
-    console.log(lidOpacity, '<<< lidOpacity')
+
     return (
       <Fragment>
-        <div>
-          {this.state.goal.hasOwnProperty('minDuration') ? (
-            <Fragment>
-              <MyPed bodyColors={bodyColors} lidOpacity={lidOpacity} />
-              <div className="slider-layout">
-                <div>
-                  <div className="slider">
-                    <div id="ticks">
-                      <span className="tick">
-                        {this.state.sleep[
-                          this.state.sleep.length - 7
-                        ].dateOfSleep.slice(5)}
-                      </span>
-                      <span className="tick">
-                        {this.state.sleep[
-                          this.state.sleep.length - 6
-                        ].dateOfSleep.slice(5)}
-                      </span>
-                      <span className="tick">
-                        {this.state.sleep[
-                          this.state.sleep.length - 5
-                        ].dateOfSleep.slice(5)}
-                      </span>
-                      <span className="tick">
-                        {this.state.sleep[
-                          this.state.sleep.length - 4
-                        ].dateOfSleep.slice(5)}
-                      </span>
-                      <span className="tick">
-                        {this.state.sleep[
-                          this.state.sleep.length - 3
-                        ].dateOfSleep.slice(5)}
-                      </span>
-                      <span className="tick">
-                        {this.state.sleep[
-                          this.state.sleep.length - 2
-                        ].dateOfSleep.slice(5)}
-                      </span>
-                      <span className="tick">today</span>
-                    </div>
-                    <input
-                      type="range"
-                      id="day"
-                      name="date"
-                      min="0"
-                      max="6"
-                      step="1"
-                      list="tickMarks"
-                      defaultValue={this.state.currentDate}
-                      onChange={evt => this.handleSlideChange(evt, this.value)}
-                    />
-                    <datalist id="tickMarks">
-                      <option value="0" />
-                      <option value="1" />
-                      <option value="2" />
-                      <option value="3" />
-                      <option value="4" />
-                      <option value="5" />
-                      <option value="6" />
-                    </datalist>
-                  </div>
-                </div>
-                <div id="slider-label">
-                  <label htmlFor="date">Daily Sleep Input</label>
-                </div>
+        {this.state.goal.hasOwnProperty('minDuration') ? (
+          <Fragment>
+            <MyPed bodyColors={bodyColors} lidOpacity={lidOpacity} />
+            <h3>Daily Sleep Total</h3>
+            <div id="currentSleep" className="simple-flex">
+              <div>
+                <button
+                  type="button"
+                  className="daily-sleep-btn"
+                  onClick={this.prevBtnClick}
+                  disabled={this.state.currentDate === 0}
+                >{`< Prev`}</button>
               </div>
-              <div className="center">
-                <div id="currentSleep">
-                  Total Daily Sleep: {utils.minToHrMin(currentSleepAmount)}
-                </div>
+              <div id="daily-info">
+                <div>{date}</div>
+                <div>{utils.minToHrMin(currentSleepAmount)}</div>
               </div>
-            </Fragment>
-          ) : (
-            <p>Loading...</p>
-          )}
-        </div>
+              <div>
+                <button
+                  type="button"
+                  className="daily-sleep-btn"
+                  onClick={this.nextBtnClick}
+                  disabled={
+                    this.state.currentDate === this.state.sleep.length - 1
+                  }
+                >{`Next >`}</button>
+              </div>
+            </div>
+          </Fragment>
+        ) : (
+          <p>Ped Loading...</p>
+        )}
       </Fragment>
     )
   }
