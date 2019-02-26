@@ -10,23 +10,15 @@ export class ActivityContainer extends Component {
       goal: {},
       currentDate: null
     }
-    this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(
-      this
-    )
     this.handleSlideChange = this.handleSlideChange.bind(this)
   }
 
   componentDidMount() {
-    this.hydrateStateWithLocalStorage()
-
     this.setState({
       sleep: this.props.sleep.reverse(), // data from api comes in most recent first
       goal: this.props.goal,
       currentDate: this.props.sleep.length - 1 // most recent date
     })
-
-    localStorage.setItem('sleep', this.props.sleep)
-    localStorage.setItem('goal', this.props)
 
     setInterval(() => {
       let {topLid, bottomLid} = utils.opacityGetter(
@@ -66,21 +58,6 @@ export class ActivityContainer extends Component {
     this.setState({currentDate: day})
   }
 
-  hydrateStateWithLocalStorage() {
-    for (let key in this.state) {
-      if (localStorage.hasOwnProperty(key)) {
-        let value = localStorage.getItem(key)
-        try {
-          value = JSON.parse(value)
-          this.setState({[key]: value})
-        } catch (e) {
-          // handle empty string
-          this.setState({[key]: value})
-        }
-      }
-    }
-  }
-
   render() {
     let sleepGoal
     let currentSleepAmount
@@ -107,6 +84,11 @@ export class ActivityContainer extends Component {
                 <button>Prev</button>
                 {this.state.sleep[this.state.currentDate].dateOfSleep.slice(5)}
                 <button>Next</button>
+              </div>
+              <div className="center">
+                <div id="currentSleep">
+                  Total Daily Sleep: {utils.minToHrMin(currentSleepAmount)}
+                </div>
               </div>
 
               {/* <div className="slider-layout">
@@ -171,11 +153,6 @@ export class ActivityContainer extends Component {
                   <label htmlFor="date">Daily Sleep Input</label>
                 </div>
               </div> */}
-              <div className="center">
-                <div id="currentSleep">
-                  Total Daily Sleep: {utils.minToHrMin(currentSleepAmount)}
-                </div>
-              </div>
             </Fragment>
           ) : (
             <p>Loading...</p>

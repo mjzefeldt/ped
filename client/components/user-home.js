@@ -4,11 +4,6 @@ import ActivityContainer from './activity-container'
 import Scale from './scale'
 
 export class UserHome extends Component {
-  componentDidMount() {
-    localStorage.setItem('sleep', this.props.sleep)
-    localStorage.setItem('goal', this.props)
-  }
-
   render() {
     return (
       <Fragment>
